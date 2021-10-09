@@ -1,9 +1,10 @@
-import { useState, useEffect, useReducer } from 'react'
+import { createContext, useContext, useState, useEffect, useReducer } from 'react'
 import { useItems } from './ItemContext'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
-import ItemList from './ItemList'
 import browseStyle from '../styles/Browse.module.css'
+
+export const FilterContext = createContext();
 
 const NestedLayout = ({ children }) => {
     const items = useItems();
@@ -72,15 +73,17 @@ const NestedLayout = ({ children }) => {
 
 
     return (
-        <main className={browseStyle.main}>
-        <Navbar dispatch={dispatch}/>
-        <div className={browseStyle.browse}>
-                <Sidebar filters={filters} setFilters={setFilters}/>
-                <div className={browseStyle.items}>
-                    {children}
-                </div>
-            </div> 
-        </main>
+        <FilterContext.Provider value={filteredItems}>
+            <main className={browseStyle.main}>
+                <Navbar dispatch={dispatch}/>
+                <div className={browseStyle.browse}>
+                    <Sidebar filters={filters} setFilters={setFilters}/>
+                    <div className={browseStyle.items}>
+                        {children}
+                    </div>
+                </div> 
+            </main>
+        </FilterContext.Provider>
     )
 }
 
