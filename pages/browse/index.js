@@ -3,6 +3,8 @@ import Navbar from '../../components/Navbar'
 import Sidebar from '../../components/Sidebar'
 import ItemList from '../../components/ItemList'
 import browseStyle from '../../styles/Browse.module.css'
+// import Layout from '../../components/Layout'
+// import NestedLayout from '../../components/NestedLayout'
 
 const Browse = () => {
     const [items, setItems] = useState([
@@ -112,5 +114,13 @@ const Browse = () => {
         </main>
     )
 }
+
+// Browse.getLayout = function getLayout(page) {
+//     return (
+//       <Layout>
+//         <NestedLayout>{page}</NestedLayout>
+//       </Layout>
+//     )
+//   }
 
 export default Browse
