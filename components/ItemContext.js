@@ -1,6 +1,10 @@
-import React, { useContext, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
-const ItemContext = React.createContext();
+const ItemContext = createContext();
+
+export function useItems() {
+    return useContext(ItemContext);
+}
 
 export function ItemContextProvider ({ children }) {
     const [items, setItems] = useState([

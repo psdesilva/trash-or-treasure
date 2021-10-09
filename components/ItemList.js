@@ -1,5 +1,6 @@
 import ItemCard from './ItemCard'
 import browseStyle from '../styles/Browse.module.css'
+import Link from 'next/link'
 
 const ItemList = ({ filteredItems, filters }) => {
 
@@ -15,7 +16,11 @@ const ItemList = ({ filteredItems, filters }) => {
             <h2 className={browseStyle.itemTitle}>{`${checkFilters() ? `Filtered Items` : `All Items`} (${filteredItems.length})`}</h2>
             <div className={browseStyle.itemList}>
                 {filteredItems.map(filteredItem => (
-                    <ItemCard filteredItem={filteredItem} key={filteredItem.id}/>
+                    <Link href={`/browse/${filteredItem.id}`}>
+                        <a>
+                            <ItemCard filteredItem={filteredItem} key={filteredItem.id}/>
+                        </a>
+                    </Link>
                 ))}
             </div>
         </div>
