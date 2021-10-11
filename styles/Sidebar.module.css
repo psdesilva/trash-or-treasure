@@ -1,6 +1,7 @@
 .sideBar {
     width: 20%;
     height: 80%;
+    z-index: 101;
     min-height: calc(100vh - 70px);
     position: fixed;
     border-right: 2px solid #444444;
@@ -8,6 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: #232323;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #D5D5D5 #444444;

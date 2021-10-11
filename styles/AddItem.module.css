@@ -35,6 +35,10 @@
     padding: 10px;
 }
 
+.blockOneSmall label {
+    font-size: 0.9rem;
+}
+
 .formElement {
     display: flex;
     flex-direction: column;
@@ -51,6 +55,11 @@
     font-size: 1rem;
 }
 
+.contactElement {
+    display: flex;
+    gap: 10px;
+}
+
 .textArea {
     height: 130px;
     resize: none;
@@ -62,6 +71,7 @@
 }
 
 .form {
-    display: none;
+    height: 100%;
+    width:100%;
 }
 

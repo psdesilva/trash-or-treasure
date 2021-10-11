@@ -15,10 +15,10 @@ const ItemList = ({ filteredItems }) => {
 
     return (
         <div className={browseStyle.itemListContainer}>
-            <h2 className={browseStyle.itemTitle}>{`(${filteredItems.length})`}</h2>
+            <h2 className={browseStyle.itemTitle}>{`Items (${filteredItems.length})`}</h2>
             <div className={browseStyle.itemList}>
                 {filteredItems.map(filteredItem => (
-                    <Link  key={filteredItem.id} href={`/browse/${filteredItem.id}`}>
+                    <Link key={filteredItem.id} href={`/browse/${filteredItem.id}`}>
                         <a>
                             <ItemCard filteredItem={filteredItem}/>
                         </a>

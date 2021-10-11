@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useReducer } from 'react'
+import { createContext, useState, useEffect, useReducer } from 'react'
 import { useItems } from './ItemContext'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
@@ -7,7 +7,10 @@ import browseStyle from '../styles/Browse.module.css'
 export const FilterContext = createContext();
 
 const NestedLayout = ({ children }) => {
-    const items = useItems();
+    const { items } = useItems();
+
+    const [currentItems, setCurrentItems] = useState(items)
+    const [searchTerm, setSearchTerm] = useState('')
 
     const [filters, setFilters] = useState(
         {used: { Unused: true, UsedLessThanOneMonth: true, UsedFewMonths: true, UsedMoreThanOneYear: true },
@@ -15,37 +18,39 @@ const NestedLayout = ({ children }) => {
         type: { Electronics: true, Books: true, CDs: true, Household: true, Furniture: true, Other: true },
     });
      
-    const [filteredItems, setFilteredItems] = useState(items);
+    const [filteredItems, setFilteredItems] = useState(currentItems);
 
     function reducer (searchFilter, action) {
         switch (action.type) {
             case 'search':
                 if (action.payload.searchTerm === ('')) {
-                    searchFilter = items;
+                    // setSearchTerm('')
+                    searchFilter = currentItems;
                 } else {
-                    searchFilter = items.filter(item => item.name.toLowerCase().includes(action.payload.searchTerm.toLowerCase()))
+                    // setSearchTerm(action.payload.searchTerm.toLowerCase());
+                    searchFilter = currentItems.filter(item => item.name.toLowerCase().includes(action.payload.searchTerm.toLowerCase()))
                 }
                 return searchFilter;
             default:
-                searchFilter = items;
+                searchFilter = currentItems;
                 return searchFilter    
         }
     }
   
-    const [searchFilter, dispatch] = useReducer(reducer, items);
+    const [searchFilter, dispatch] = useReducer(reducer, currentItems);
     
     function filterReducer (filterFilter, action) {
         switch (action.type) {
             case 'filter':
-                filterFilter = items.filter(item => getFilteredItems(item))
+                filterFilter = currentItems.filter(item => getFilteredItems(item))
                 return filterFilter;
             default: 
-                filterFilter = items;
+                filterFilter = currentItems;
                 return filterFilter;
         }
     }
 
-    const [filterFilter, dispatchFilter] = useReducer(filterReducer, items);
+    const [filterFilter, dispatchFilter] = useReducer(filterReducer, currentItems);
 
     useEffect (() => {
         dispatchFilter({type: 'filter', payload: {filters: filters}})
@@ -54,6 +59,12 @@ const NestedLayout = ({ children }) => {
     useEffect (() => {
         setFilteredItems( searchFilter.filter(element => filterFilter.includes(element)))
     },[searchFilter, filterFilter])
+
+    useEffect (()=> {
+        setCurrentItems(items)
+        dispatchFilter({type: 'filter', payload: {filters: filters}})
+        dispatch({ type: 'search', payload: { searchTerm: ''} })
+    }, [items])
 
     function getFilteredItems(item) {
         const noWhiteSpaces = item.used.replace(/\s+/g, '');
@@ -78,9 +89,7 @@ const NestedLayout = ({ children }) => {
                 <Navbar dispatch={dispatch}/>
                 <div className={browseStyle.browse}>
                     <Sidebar filters={filters} setFilters={setFilters}/>
-                    <div className={browseStyle.items}>
                         {children}
-                    </div>
                 </div> 
             </main>
         </FilterContext.Provider>

@@ -47,6 +47,7 @@
 .title {
     position: relative;
     top: 85%;
+    line-height: 30px;
     left: 5%;
     z-index: 99;
     font-weight: normal;
