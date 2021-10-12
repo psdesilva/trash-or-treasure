@@ -99,7 +99,7 @@
     align-items: center;
 }
 
-.category input:focus + label {
+.category input:focus-visible + label {
     outline: 1px solid #D5D5D5;
 }
 

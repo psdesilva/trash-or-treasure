@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
 const ItemContext = createContext();
-const SingleItemContext = createContext();
 
 export function useItems() {
     return useContext(ItemContext);

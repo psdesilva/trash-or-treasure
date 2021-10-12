@@ -11,6 +11,7 @@ import navbarStyle from '../styles/Navbar.module.css'
 const Navbar = ({ dispatch }) => {
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState('');
+    const [addProcessState, setAddProcessState] = useState()
 
     function handleSearchSubmit (e) {
         e.preventDefault();

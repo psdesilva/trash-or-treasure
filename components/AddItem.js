@@ -3,13 +3,16 @@ import Button from './Button'
 import addItemStyle from '../styles/AddItem.module.css'
 import { useItems } from './ItemContext'
 import { v4 as uuidv4 } from 'uuid';
+import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
 
 const AddItem = () => {
     const id = uuidv4();
     const { addItem, items } = useItems();
     const [itemImage, setItemImage] = useState(null);
+    const [loadingImage, setLoadingImage] = useState(false)
 
     function uploadImage(e) {
+        setLoadingImage(true);
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append("file", file);
@@ -26,6 +29,7 @@ const AddItem = () => {
                 const img = data.secure_url;
                 setItemImage(img);
                 console.log(img)
+                setLoadingImage(false);
             })
             .catch (err => console.log(err))
     }
@@ -54,8 +58,11 @@ const AddItem = () => {
             <div className={addItemStyle.container}>
                 <div className={addItemStyle.blockOne}>
                     <div className={addItemStyle.blockOneSmall}>
-                        <label htmlFor="itemImage">Upload Item Image:</label>
-                        <input type="file" accept="image/*" name="itemImage" id="itemImage" className={`${addItemStyle.formInput} ${addItemStyle.imageUpload}`} onChange={uploadImage} required/>
+                        <div className={addItemStyle.imageUploadContainer}>
+                            <div className={`${addItemStyle.spinner} ${loadingImage ? '': addItemStyle.hide}`}></div>
+                            <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage} required/>
+                            <label htmlFor="itemImage"><h5><BsUpload /></h5><p>Click to Upload Image</p></label>
+                        </div>
                     </div>
                     <div className={addItemStyle.blockOneLarge}>
                         <div className={addItemStyle.formElement}>
