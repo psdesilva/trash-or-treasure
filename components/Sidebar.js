@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { BiChevronRight } from "@react-icons/all-files/bi/BiChevronRight";
 
 const Sidebar = ({ filters, setFilters }) => {
-    const[openCategories, setOpenCategories] = useState([]);
+    const[openCategories, setOpenCategories] = useState(['3']);
 
     const handleUsedCheckbox = (e) => {
         setFilters({...filters, used: {...filters.used, [e.target.value]: !filters.used[e.target.value]}})

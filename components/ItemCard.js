@@ -14,7 +14,7 @@ const ItemCard = ({ filteredItem }) => {
             <h3 className={itemCardStyle.title}>{filteredItem.name}</h3>
             <div className={itemCardStyle.text}>
                 <p>Location: {filteredItem.location}</p>
-                {Object.entries(filteredItem.contact).map(contact => ( <p key={contact}>{contact[0]}: {contact[1]}</p>))}
+                <p>{Object.entries(filteredItem.contact)[0][0]}: {Object.entries(filteredItem.contact)[0][1]}</p>
                 <p>{filteredItem.used}</p>
                 <p>{filteredItem.broken}</p>
             </div>

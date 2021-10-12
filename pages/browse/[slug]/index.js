@@ -30,7 +30,7 @@ const Item = ({ slug }) => {
                 </div>
                 <div className={itemStyle.infoText}>
                   <p>Location: {item.location}</p>
-                  {Object.entries(item.contact).map(contact => ( <p key={contact}>{contact[0]}: {contact[1]}</p>))}
+                  <p>{Object.entries(item.contact)[0][0]}: {Object.entries(item.contact)[0][1]}</p>
                   <p>{item.description}</p>
                   <p>{`${item.used} - ${item.broken}`}</p>
                 </div>
