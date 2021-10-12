@@ -58,7 +58,7 @@ const AddItem = () => {
             <div className={addItemStyle.container}>
                 <div className={addItemStyle.blockOne}>
                     <div className={addItemStyle.blockOneSmall}>
-                        <div className={addItemStyle.imageUploadContainer}>
+                        <div className={addItemStyle.imageUploadContainer} style={{backgroundImage: `url(${itemImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat:'no-repeat'}}>
                             <div className={`${addItemStyle.spinner} ${loadingImage ? '': addItemStyle.hide}`}></div>
                             <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage} required/>
                             <label htmlFor="itemImage"><h5><BsUpload /></h5><p>Click to Upload Image</p></label>
