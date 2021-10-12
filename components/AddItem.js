@@ -10,9 +10,11 @@ const AddItem = () => {
     const { addItem, items } = useItems();
     const [itemImage, setItemImage] = useState(null);
     const [loadingImage, setLoadingImage] = useState(false)
+    const [imageText, setImageText] = useState("Click to Upload Image")
 
     function uploadImage(e) {
         setLoadingImage(true);
+        setImageText("Click to Change Image")
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append("file", file);
@@ -61,7 +63,7 @@ const AddItem = () => {
                         <div className={addItemStyle.imageUploadContainer} style={{backgroundImage: `url(${itemImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat:'no-repeat'}}>
                             <div className={`${addItemStyle.spinner} ${loadingImage ? '': addItemStyle.hide}`}></div>
                             <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage} required/>
-                            <label htmlFor="itemImage"><h5><BsUpload /></h5><p>Click to Upload Image</p></label>
+                            <label htmlFor="itemImage" className={`${imageText === "Click to Upload Image" ? '': addItemStyle.hide}`}><h5><BsUpload /></h5><p>{imageText}</p></label>
                         </div>
                     </div>
                     <div className={addItemStyle.blockOneLarge}>

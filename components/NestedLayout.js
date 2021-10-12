@@ -67,8 +67,9 @@ const NestedLayout = ({ children }) => {
     }, [items])
 
     function getFilteredItems(item) {
-        const noWhiteSpaces = item.used.replace(/\s+/g, '');
-        const itemProperties = [item.type, noWhiteSpaces, item.broken]
+        const noWhiteSpacesUsed = item.used.replace(/\s+/g, '');
+        const noWhiteSpacesBroken = item.broken.replace(/\s+/g, '');
+        const itemProperties = [item.type, noWhiteSpacesUsed, noWhiteSpacesBroken]
       
         const allKeys = Object.entries(filters).map(category => Object.keys(category[1]))
         const allKeysFlat = allKeys.flat();

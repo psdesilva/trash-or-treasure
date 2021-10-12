@@ -105,6 +105,12 @@
     justify-content: center;
     height: 100%;
     cursor: pointer;
+    /* background-color: rgba(0, 0, 0, 0.534); */
+    border-radius: 10px;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.534);
 }
 
 .imageUploadContainer label h5{
