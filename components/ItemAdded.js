@@ -22,7 +22,7 @@ const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
                 <div className={itemAddedStyle.info}>
                     <p>Location: {addedItem.location}</p>
                     <p>{Object.entries(addedItem.contact)[0][0]}: {Object.entries(addedItem.contact)[0][1]}</p>
-                    <p>{addedItem.description}</p>
+                    <p>Description: {addedItem.description}</p>
                     <p>{`${addedItem.used} - ${addedItem.broken}`}</p>
                 </div>
             </div>

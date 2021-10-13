@@ -5,6 +5,9 @@ import Image from 'next/image'
 import itemStyle from '../../../styles/Item.module.css'
 import { useItems } from '../../../components/ItemContext'
 import { FiArrowLeftCircle } from "@react-icons/all-files/fi/FiArrowLeftCircle";
+import { MdDescription } from "@react-icons/all-files/md/MdDescription";
+import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
+import { MdPhoneIphone } from "@react-icons/all-files/md/MdPhoneIphone";
 
 const Item = ({ slug }) => {
     const { getSingleItem } = useItems();
@@ -29,10 +32,28 @@ const Item = ({ slug }) => {
                   <h1>{item.name}</h1>
                 </div>
                 <div className={itemStyle.infoText}>
-                  <p>Location: {item.location}</p>
-                  <p>{Object.entries(item.contact)[0][0]}: {Object.entries(item.contact)[0][1]}</p>
-                  <p>{item.description}</p>
-                  <p>{`${item.used} - ${item.broken}`}</p>
+                  <div className={itemStyle.individualInfo}>
+                    <div className={itemStyle.individualInfoIcon}>
+                      <MdLocationOn />
+                    </div>
+                    <p><span className={itemStyle.bold}>Location:&#160;</span> {item.location}</p>
+                  </div>
+                  <div className={itemStyle.individualInfo}>
+                    <div className={itemStyle.individualInfoIcon}>
+                      <MdPhoneIphone />
+                    </div>
+                    <p><span className={itemStyle.bold}>{Object.entries(item.contact)[0][0]}:&#160;</span> {Object.entries(item.contact)[0][1]}</p>
+                  </div>
+                  <div className={itemStyle.individualInfo}>
+                    <div className={itemStyle.individualInfoIcon}>
+                      <MdDescription />
+                    </div>
+                    <p><span className={itemStyle.bold}>Description:&#160;</span> {item.description}</p>
+                  </div>
+                  <div className={itemStyle.condition}>
+                    <p>{item.used}</p>
+                    <p>{item.broken}</p>
+                  </div>
                 </div>
               </div>
             </div>

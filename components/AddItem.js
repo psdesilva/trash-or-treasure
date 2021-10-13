@@ -54,7 +54,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
             contact: { [contactType.value]: contact.value },
             used: used.value,
             broken: broken.value,
-            description: description.value
+            description: description.value || 'N/A'
         }
         if (itemImage !== null) {
             addItem(newItem);
@@ -89,7 +89,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                             <select id="itemType" className={addItemStyle.formInput}>
                                 <option value="Electronics">Electronics</option>
                                 <option value="Books">Books</option>
-                                <option value="CDs/DVDs">CDs/DVDs</option>
+                                <option value="CDs">CDs/DVDs</option>
                                 <option value="Household">Household</option>
                                 <option value="Furniture">Furniture</option>
                                 <option value="Other">Other</option>
