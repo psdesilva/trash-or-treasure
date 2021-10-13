@@ -56,9 +56,7 @@ const Navbar = ({ dispatch }) => {
                     />
                 </a>
             </div>
-            <Modal show={showModal} onClose={() => setShowModal(false)}>
-                <AddItem />
-            </Modal>
+            <Modal show={showModal} onClose={() => setShowModal(false)}/>
         </nav>
     )
 }

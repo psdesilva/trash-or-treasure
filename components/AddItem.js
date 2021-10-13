@@ -5,7 +5,7 @@ import { useItems } from './ItemContext'
 import { v4 as uuidv4 } from 'uuid';
 import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
 
-const AddItem = () => {
+const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const id = uuidv4();
     const { addItem, items } = useItems();
     const [itemImage, setItemImage] = useState(null);
@@ -14,23 +14,30 @@ const AddItem = () => {
 
     function uploadImage(e) {
         setLoadingImage(true);
-        setImageText("Click to Change Image")
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", "qlshxsot")
         formData.append("folder", "/TrashOrTreasure/itemImages")
-        
 
         fetch('https://api.cloudinary.com/v1_1/prnkdslv/image/upload', {
             method: 'POST',
             body: formData,
         })
-            .then (response => response.json())
+            .then (response => {
+                if(response.status !== 200) {
+                    setItemImage(null);
+                    setImageText("Please Upload Valid Image!")
+                    setLoadingImage(false);
+                    throw Error (`${response.status}: ${response.statusText}`)
+                } else {
+                    return response.json()
+                }
+            })
             .then (data => {
                 const img = data.secure_url;
+                setImageText("Click to Change Image")
                 setItemImage(img);
-                console.log(img)
                 setLoadingImage(false);
             })
             .catch (err => console.log(err))
@@ -51,6 +58,8 @@ const AddItem = () => {
         }
         if (itemImage !== null) {
             addItem(newItem);
+            setAddedItem(newItem);
+            setAddItemDone(true);
         }
         console.log(items);
     }
@@ -60,10 +69,10 @@ const AddItem = () => {
             <div className={addItemStyle.container}>
                 <div className={addItemStyle.blockOne}>
                     <div className={addItemStyle.blockOneSmall}>
-                        <div className={addItemStyle.imageUploadContainer} style={{backgroundImage: `url(${itemImage})`, backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat:'no-repeat'}}>
+                        <div className={addItemStyle.imageUploadContainer} style={{backgroundImage: itemImage ? `url(${itemImage})`: '', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat:'no-repeat'}}>
                             <div className={`${addItemStyle.spinner} ${loadingImage ? '': addItemStyle.hide}`}></div>
                             <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage} required/>
-                            <label htmlFor="itemImage" className={`${imageText === "Click to Upload Image" ? '': addItemStyle.hide}`}><h5><BsUpload /></h5><p>{imageText}</p></label>
+                            <label htmlFor="itemImage" className={`${itemImage ? addItemStyle.overlay: ''}`}><h5><BsUpload /></h5><p>{imageText}</p></label>
                         </div>
                     </div>
                     <div className={addItemStyle.blockOneLarge}>
