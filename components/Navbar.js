@@ -7,8 +7,10 @@ import AddItem from './AddItem'
 import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown";
 import { MdSearch } from "@react-icons/all-files/md/MdSearch";
 import navbarStyle from '../styles/Navbar.module.css'
+import { useRouter } from 'next/router'
 
 const Navbar = ({ dispatch }) => {
+    const router = useRouter();
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState('');
     const [addProcessState, setAddProcessState] = useState()
@@ -16,6 +18,7 @@ const Navbar = ({ dispatch }) => {
     function handleSearchSubmit (e) {
         e.preventDefault();
         dispatch({ type: 'search', payload: { searchTerm: search } })
+        router.push('/browse')
     }
 
     function handleSearchChange (e) {

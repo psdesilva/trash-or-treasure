@@ -3,7 +3,7 @@
     color: #D1AE00;
     border: 3px solid #D1AE00;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: #232323;
     padding: 15px 30px;
     font-size: 1rem;
     transition: all 0.3s ease-in;
@@ -13,7 +13,7 @@
     color: #D1AE00;
     border: 2px solid #D1AE00;
     border-radius: 10px;
-    background-color: transparent;
+    background-color: #232323;
     padding: 5px 30px;
     font-size: 1rem;
     transition: all 0.3s ease-in;

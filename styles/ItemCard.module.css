@@ -73,3 +73,10 @@
     font-size: 0.8rem;
 }
 
+@media screen and (max-width: 1300px) {
+    .container {
+        width: 220px;
+        height: 220px;
+    }
+}
+

@@ -1,8 +1,18 @@
 import Button from "./Button"
 import Image from 'next/image'
 import itemAddedStyle from '../styles/ItemAdded.module.css'
+import { useRouter } from 'next/router'
 
 const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
+    const router = useRouter();
+    const returnToBrowse = (e) => {
+        const path = router.pathname;
+        if (!path.includes('browse')) {
+            router.push('/browse')
+        }
+        handleClose(e);
+    }
+
     return (
         <div className={itemAddedStyle.container}>
             <h1>Item Successfully Added!</h1>
@@ -28,7 +38,7 @@ const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
             </div>
             <div className={itemAddedStyle.buttons}>
                 <Button text={"Add New Item"} onClick={() => setAddItemDone(false)}/>
-                <Button text={"Browse Treasures"} onClick={handleClose}/>
+                <Button text={"Browse Treasures"} onClick={returnToBrowse}/>
             </div>
         </div>
     )

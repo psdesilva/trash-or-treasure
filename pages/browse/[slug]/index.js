@@ -69,11 +69,11 @@ export const getServerSideProps = async (context) => {
 }
 
 Item.getLayout = function getLayout(page) {
-    return (
-      <Layout>
-        <NestedLayout>{page}</NestedLayout>
-      </Layout>
-    )
-  }
+  return (
+    <Layout>
+      <NestedLayout>{page}</NestedLayout>
+    </Layout>
+  )
+}
 
 export default Item
