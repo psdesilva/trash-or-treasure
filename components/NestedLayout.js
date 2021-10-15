@@ -3,20 +3,35 @@ import { useItems } from './ItemContext'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 import browseStyle from '../styles/Browse.module.css'
+import useMediaQuery from '../hooks/MediaQuery' 
+import MobileNavbar from './Mobile/MobileNavBar'
 
 export const FilterContext = createContext();
 
 const NestedLayout = ({ children }) => {
+    const isBreakPoint = useMediaQuery(799)
     const { items } = useItems();
 
     const [currentItems, setCurrentItems] = useState(items)
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTermm, setSearchTerm] = useState('') //useRef instead
+
+    const [showFilters, setShowFilters] = useState(false);
 
     const [filters, setFilters] = useState(
         {used: { Unused: true, UsedLessThanOneMonth: true, UsedFewMonths: true, UsedMoreThanOneYear: true },
         broken: { Unbroken: true, PartiallyBroken: true, CompletelyBroken: true },
         type: { Electronics: true, Books: true, CDs: true, Household: true, Furniture: true, Other: true },
     });
+
+    // function selectAll(category) {
+    //     const selectedCategory = filters[category];
+    //     Object.keys(selectedCategory).forEach(v => selectedCategory[v] = true)
+    // }
+
+    // function deselectAll(category) {
+    //     const selectedCategory = filters[category];
+    //     Object.keys(selectedCategory).forEach(v => selectedCategory[v] = false)
+    // }
      
     const [filteredItems, setFilteredItems] = useState(currentItems);
 
@@ -24,10 +39,10 @@ const NestedLayout = ({ children }) => {
         switch (action.type) {
             case 'search':
                 if (action.payload.searchTerm === ('')) {
-                    // setSearchTerm('')
+                    setSearchTerm('')
                     searchFilter = currentItems;
                 } else {
-                    // setSearchTerm(action.payload.searchTerm.toLowerCase());
+                    setSearchTerm(action.payload.searchTerm.toLowerCase());
                     searchFilter = currentItems.filter(item => item.name.toLowerCase().includes(action.payload.searchTerm.toLowerCase()))
                 }
                 return searchFilter;
@@ -63,7 +78,7 @@ const NestedLayout = ({ children }) => {
     useEffect (()=> {
         setCurrentItems(items)
         dispatchFilter({type: 'filter', payload: {filters: filters}})
-        dispatch({ type: 'search', payload: { searchTerm: ''} })
+        dispatch({ type: 'search', payload: { searchTerm: searchTermm} })
     }, [items])
 
     function getFilteredItems(item) {
@@ -87,9 +102,12 @@ const NestedLayout = ({ children }) => {
     return (
         <FilterContext.Provider value={filteredItems}>
             <main className={browseStyle.main}>
-                <Navbar dispatch={dispatch}/>
+                { isBreakPoint ? <MobileNavbar dispatch={dispatch} setShowFilters={setShowFilters} showFilters={showFilters}/> :  <Navbar dispatch={dispatch}/>}
+                {/* { isBreakPoint ? <button className={browseStyle.filterButton}>Filter</button> :  ''} */}
                 <div className={browseStyle.browse}>
-                    <Sidebar filters={filters} setFilters={setFilters}/>
+                    { isBreakPoint ? showFilters ? <Sidebar filters={filters} setFilters={setFilters}/> :  '' :  <Sidebar filters={filters} setFilters={setFilters}/>}
+                    {/* { showFilters ? '' :  <Sidebar filters={filters} setFilters={setFilters}/>} */}
+                    {/* <Sidebar filters={filters} setFilters={setFilters}/> */}
                         {children}
                 </div> 
             </main>

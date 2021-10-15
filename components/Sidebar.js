@@ -31,7 +31,7 @@ const Sidebar = ({ filters, setFilters }) => {
             <h2 className={sidebarStyle.sideBarTitle}> Filter </h2>
             <div className={sidebarStyle.mainCategory} id="1">
                 <button className={sidebarStyle.mainCategoryTitle} onClick={handleCategoryClick}>
-                    <h3 className={sidebarStyle.mainCategoryTitleText}><BiChevronRight className={`${sidebarStyle.chevron} ${!openCategories.includes('1') ? `` : `${sidebarStyle.rotated}`} `} />Used/Unused</h3>
+                    <h3 className={sidebarStyle.mainCategoryTitleText}><BiChevronRight className={`${sidebarStyle.chevron} ${!openCategories.includes('1') ? `` : `${sidebarStyle.rotated}`} `} />Used / Unused</h3>
                 </button>
                 <div className={`${!openCategories.includes('1') ? `${sidebarStyle.categoryListHidden}` : `${sidebarStyle.categoryListVisible}`} `}>
                     <div className={sidebarStyle.category}>
@@ -54,7 +54,7 @@ const Sidebar = ({ filters, setFilters }) => {
             </div>
             <div className={sidebarStyle.mainCategory} id="2">
                 <button className={sidebarStyle.mainCategoryTitle} onClick={handleCategoryClick}>
-                    <h3 className={sidebarStyle.mainCategoryTitleText}><BiChevronRight className={`${sidebarStyle.chevron} ${!openCategories.includes('2') ? `` : `${sidebarStyle.rotated}`} `} />Broken/Unbroken</h3>
+                    <h3 className={sidebarStyle.mainCategoryTitleText}><BiChevronRight className={`${sidebarStyle.chevron} ${!openCategories.includes('2') ? `` : `${sidebarStyle.rotated}`} `} />Broken / Unbroken</h3>
                 </button>
                 <div className={`${!openCategories.includes('2') ? `${sidebarStyle.categoryListHidden}` : `${sidebarStyle.categoryListVisible}`} `}>
                     <div className={sidebarStyle.category}>

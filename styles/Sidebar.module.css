@@ -116,8 +116,11 @@
     transform: rotate(90deg);
 }
 
-/* @media screen and (max-width: 600px) {
+@media screen and (max-width: 799px) {
     .sideBar {
-        display: none
+        width: 100%;
+        border-right: none;
+        background-color: #232323e5;
+        /* transform: translateX(-2%) */
     }
-} */
+}

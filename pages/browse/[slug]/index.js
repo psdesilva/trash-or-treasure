@@ -1,6 +1,7 @@
 import Layout from '../../../components/Layout'
 import NestedLayout from '../../../components/NestedLayout'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import itemStyle from '../../../styles/Item.module.css'
 import { useItems } from '../../../components/ItemContext'
@@ -8,17 +9,21 @@ import { FiArrowLeftCircle } from "@react-icons/all-files/fi/FiArrowLeftCircle";
 import { MdDescription } from "@react-icons/all-files/md/MdDescription";
 import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
 import { MdPhoneIphone } from "@react-icons/all-files/md/MdPhoneIphone";
+import useMediaQuery from '../../../hooks/MediaQuery'
 
 const Item = ({ slug }) => {
-    const { getSingleItem } = useItems();
-    const item = getSingleItem(slug);
+    const isBreakPoint = useMediaQuery(799)
+    const { getSingleItem } = useItems()
+    const item = getSingleItem(slug)
+    const router = useRouter()
 
     return (
         <div className={itemStyle.container}>
             <div className={itemStyle.back}>
-              <Link href="/browse"><a><FiArrowLeftCircle /></a></Link>
+              <a href="#" onClick={() => router.push('/browse')}><FiArrowLeftCircle /></a>
             </div>
             <div className={itemStyle.itemDetails}>
+            { isBreakPoint ? <div className={itemStyle.name}><h1>{item.name}</h1></div> : ''}
               <div className={itemStyle.imageContainer}>
                 <Image 
                   src={item.img}
@@ -28,9 +33,7 @@ const Item = ({ slug }) => {
                 /> 
               </div>
               <div className={itemStyle.info}>
-                <div className={itemStyle.name}>
-                  <h1>{item.name}</h1>
-                </div>
+                { isBreakPoint ? '' : <div className={itemStyle.name}><h1>{item.name}</h1></div>}
                 <div className={itemStyle.infoText}>
                   <div className={itemStyle.individualInfo}>
                     <div className={itemStyle.individualInfoIcon}>

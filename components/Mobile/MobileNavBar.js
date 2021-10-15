@@ -1,21 +1,22 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
-import Button from './Button'
-import Modal from './Modal';
-import AddItem from './AddItem'
+import Button from '../Button'
+import Modal from '../Modal';
 import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown";
 import { MdSearch } from "@react-icons/all-files/md/MdSearch";
-import navbarStyle from '../styles/Navbar.module.css'
+import navbarStyle from '../../styles/Mobile/MobileNavbar.module.css'
 import { useRouter } from 'next/router'
 
-const Navbar = ({ dispatch }) => {
+const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState('');
+    const [searchBarView, setSearchBarView] = useState(false);
 
     function handleSearchSubmit (e) {
         e.preventDefault();
+        setSearchBarView(false);
         dispatch({ type: 'search', payload: { searchTerm: search } })
         router.push('/browse')
     }
@@ -30,36 +31,33 @@ const Navbar = ({ dispatch }) => {
 
     return (
         <nav className={navbarStyle.navBar}>
-            <div className={navbarStyle.navBarDiv}>
+            <div className={navbarStyle.navBarDivSmall}>
                 <Link href="/">
                     <a className={navbarStyle.navBarAnchor}>
                         <Image 
                             src="/box-icon.svg"
-                            height={45}
-                            width={45}
+                            height={40}
+                            width={40}
                             className={navbarStyle.navBarImage}
                         />
                     </a>
                 </Link>
-                <form className={navbarStyle.searchContainer} onSubmit={handleSearchSubmit}>
-                    <MdSearch className={navbarStyle.searchIcon}/>
-                    <input type="text" name="searchbar" className={navbarStyle.search} value={search} onChange={handleSearchChange} placeholder="Search"/>
-                </form>
+                <button onClick={() => setShowFilters(!showFilters)}>Filter</button>
             </div>
-            <div className={navbarStyle.navBarDiv}>
+            {/* <div>
                 <Button onClick={() => setShowModal(true)} text={'+ Add Item'} navBar={true}/>
-                <a className={navbarStyle.navBarAnchor}>
-                    <Image 
-                        src="/user-circle-solid.svg"
-                        height={40}
-                        width={40}
-                        className={navbarStyle.profileIcon}
-                    />
-                </a>
+            </div> */}
+            <div className={navbarStyle.navBarDivLarge}>
+                <form className={navbarStyle.searchContainer} onSubmit={handleSearchSubmit}>
+                    <label htmlFor="searchbar" onClick={() => setSearchBarView(!searchBarView) }><MdSearch className={navbarStyle.searchIcon}/></label>
+                    <input type="text" name="searchbar" id="searchbar" className={searchBarView ? `` : `${navbarStyle.hidden}`} value={search} onChange={handleSearchChange} placeholder="Search"/>
+                    <div onClick={() => setSearchBarView(!searchBarView)} className={`${navbarStyle.overlay} ${ searchBarView ? `` : `${navbarStyle.hidden}` }`}></div>
+                </form>
+                <Button onClick={() => setShowModal(true)} text={'+ Item'} navBar={true}/>
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)}/>
         </nav>
     )
 }
 
-export default Navbar
+export default MobileNavbar

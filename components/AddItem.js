@@ -113,7 +113,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                                 <input type="text" name="contact" id="contact" className={addItemStyle.formInput} required/>
                             </div>
                         </div>
-                        <div className={addItemStyle.formElement}>
+                        <div className={`${addItemStyle.formElement} ${addItemStyle.textAreaContainer}`}>
                             <label htmlFor="description">Description:</label>
                             <textarea name="description" id="description" maxLength="200" className={`${addItemStyle.formInput} ${addItemStyle.textArea}`}/>
                         </div>

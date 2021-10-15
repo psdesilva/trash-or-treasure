@@ -1,5 +1,6 @@
 .btn {
-    min-width: 250px;
+    width: 100%;
+    max-width: 250px;
     color: #D1AE00;
     border: 3px solid #D1AE00;
     border-radius: 10px;
@@ -27,4 +28,11 @@
 .btn:hover {
     background-color: #D1AE00;
     color: #232323;
+}
+
+@media screen and (max-width: 799px) {
+    .navBarBtn {
+        padding: 5px 5px;
+        max-width: 100px;
+    }
 }

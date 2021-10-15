@@ -10,6 +10,7 @@ const ItemCard = ({ filteredItem }) => {
                 layout="fill"
                 objectFit="cover"
                 className={itemCardStyle.image}
+                quality='20'
             />
             <h3 className={itemCardStyle.title}>{filteredItem.name}</h3>
             <div className={itemCardStyle.text}>

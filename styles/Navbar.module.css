@@ -12,6 +12,7 @@
 }
   
 .navBarDiv {
+    width: 30%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -26,14 +27,11 @@
     margin-top: 5px;
 }
 
-.chevron {
-    vertical-align: middle;
-}
-
 .searchContainer {
     position: relative;
     display: flex;
     align-items: center;
+    width: 60%;
 }
 
 .searchIcon {
@@ -43,7 +41,7 @@
 }
 
 .search {
-    width: 80%;
+    width: 70%;
     outline: none;
     height: 1.7rem;
     padding: 0.7rem 0.7rem 0.7rem 1.5rem;
