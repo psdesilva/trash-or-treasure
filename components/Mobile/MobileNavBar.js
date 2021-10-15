@@ -27,6 +27,14 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     }
 
     useEffect(() => {
+        if(showModal == true) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "scroll"
+        }
+    }, [showModal])
+
+    useEffect(() => {
         dispatch({ type: 'search', payload: { searchTerm: search } })
     }, [search])
 
