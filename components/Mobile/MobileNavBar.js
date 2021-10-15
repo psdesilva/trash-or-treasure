@@ -17,6 +17,7 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     function handleSearchSubmit (e) {
         e.preventDefault();
         setSearchBarView(false);
+        setShowFilters(false);
         dispatch({ type: 'search', payload: { searchTerm: search } })
         router.push('/browse')
     }
@@ -42,7 +43,7 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
                         />
                     </a>
                 </Link>
-                <button onClick={() => setShowFilters(!showFilters)}>Filter</button>
+                <button onClick={() => setShowFilters(!showFilters)}>Filter <BiChevronDown className={`${navbarStyle.chevron} ${ showFilters ? `${navbarStyle.rotated}` : `` }`}/></button>
             </div>
             {/* <div>
                 <Button onClick={() => setShowModal(true)} text={'+ Add Item'} navBar={true}/>

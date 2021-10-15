@@ -107,6 +107,7 @@
     vertical-align: -10%;
     margin-right: 10px;
     pointer-events: none;
+    transition: all 0.1s ease-in-out;
 }
 
 .rotated {
@@ -120,7 +121,7 @@
     .sideBar {
         width: 100%;
         border-right: none;
-        background-color: #232323e5;
+        background-color: #232323f8;
         /* transform: translateX(-2%) */
     }
 }

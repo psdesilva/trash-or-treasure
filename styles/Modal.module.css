@@ -49,9 +49,11 @@
         height:90%;
     }
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 799px) {
         .modal {
-            width: 700px;
-            height: 600px;
+            width: 100vw;
+            height: 100vh;
+            border-radius: 0;
+            border: none;
         }
     }

@@ -136,7 +136,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                                 <option value="Completely Broken">Completely Broken</option>
                             </select>
                         </div>
-                        <Button text={"Submit"} type="submit"/>
+                        <Button className={addItemStyle.btn} text={"Submit"} type="submit"/>
                     </div>
                 </div>
             </div>

@@ -135,3 +135,23 @@
     width:100%;
 }
 
+@media screen and (max-width: 799px) {
+    .container {
+        overflow-y: scroll;
+    }
+
+    .blockOne {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .blockOneSmall {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .blockOneLarge {
+        width: 100%;
+    }
+}
+
