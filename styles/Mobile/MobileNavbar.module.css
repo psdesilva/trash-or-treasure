@@ -17,7 +17,7 @@
     align-items: center;
     /* border: 1px solid red; */
     width:40%;
-    gap: 10px;
+    gap: 15px;
 }
 
 .navBarDivSmall button {
@@ -42,10 +42,9 @@
 }
 
 .navBarDivLarge {
-    height: 30px;
-    /* border: 1px solid red; */
+    height: 100%;
     display: flex;
-    gap: 10px;
+    gap: 15px;
     width:50%;
     justify-content: flex-end;
 }
@@ -55,9 +54,15 @@
     flex-direction: column;
 }
 
-.searchContainer label {
+.searchIcon {
     height: 100%;
     font-size: 1.7rem;
+}
+
+.navBar form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .searchContainer input {
@@ -87,4 +92,70 @@
 .hidden {
     display: none;
 }
+
+.menuIcon {
+    font-size: 2rem;
+    height: 100%;
+}
+
+.navBar a {
+    display: block;
+    line-height: 0;
+}
+
+.menu {
+    position: absolute;
+    background-color: #444444;
+    top: 68px;
+    right: 0;
+    z-index: 150;
+    width: 50%;
+    max-width: 300px;
+    border-radius: 0 0 0 10px;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    text-align: left;
+}
+
+.menuItem p {
+    width: 80%;
+}
+
+.menuOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width:100vw;
+    z-index: 149;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.navBar button {
+    height: 100%;
+    background: none;
+    border: none;
+    color: #d5d5d5
+    
+}
+
+/* .add .subMenuIcon{
+    color: #D1AE00;
+    font-size: 1.4rem;
+} */
+
+.subMenuIcon {
+    font-size: 1.2rem;
+}
+
+.menuItem:first-child {
+    border-bottom: 2px solid #232323;
+}
+
+
 
