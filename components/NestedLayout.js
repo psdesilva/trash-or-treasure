@@ -17,13 +17,13 @@ const NestedLayout = ({ children }) => {
 
     const [showFilters, setShowFilters] = useState(false);
 
-    useEffect(() => {
-        if(showFilters == true) {
-            document.body.style.overflow = "hidden"
-        } else {
-            document.body.style.overflow = "scroll"
-        }
-    }, [showFilters])
+    // useEffect(() => {
+    //     if(showFilters == true) {
+    //         document.body.style.overflow = "hidden"
+    //     } else {
+    //         document.body.style.overflow = "scroll"
+    //     }
+    // }, [showFilters])
 
     const [filters, setFilters] = useState(
         {used: { Unused: true, UsedLessThanOneMonth: true, UsedFewMonths: true, UsedMoreThanOneYear: true },
