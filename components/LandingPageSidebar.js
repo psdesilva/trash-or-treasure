@@ -20,7 +20,7 @@ const LandingPageSidebar = () => {
                     <AddItem />
                 </Modal>
                 <button onClick={() => console.log(user)}>User</button>
-                {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.name} <Link href="/api/auth/logout"><a  className={LandingPageStyles.login}>Logout</a></Link> </p> :<Link href="/api/auth/login"><a className={LandingPageStyles.login}>Login/Register</a></Link> }
+                {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.name} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}
             </div>
 
         </div>
