@@ -3,19 +3,23 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from '../Button'
 import Modal from '../Modal';
+import LoginPromptModal from '../LoginPromptModal'
 import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown";
 import { MdSearch } from "@react-icons/all-files/md/MdSearch";
 import { MdMenu } from "@react-icons/all-files/md/MdMenu";
 import navbarStyle from '../../styles/Mobile/MobileNavbar.module.css'
 import { useRouter } from 'next/router'
 import MobileMenu from './MobileMenu';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
+    const [showLoginPromptModal, setShowLoginPromptModal] = useState(false);
     const [search, setSearch] = useState('');
     const [searchBarView, setSearchBarView] = useState(false);
     const [openMenu, setOpenMenu] = useState(false)
+    const { user, error, isLoading } = useUser();
 
     function handleSearchSubmit (e) {
         e.preventDefault();
@@ -30,17 +34,21 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     }
 
     function openModal () {
-        setShowModal(true);
+        if (user) {
+            setShowModal(true);
+        } else {
+            setShowLoginPromptModal(true)
+        } 
         setOpenMenu(false);
     }
 
     useEffect(() => {
-        if(showModal == true) {
+        if(showModal || showLoginPromptModal == true) {
             document.body.style.overflow = "hidden"
         } else {
             document.body.style.overflow = "auto"
         }
-    }, [showModal])
+    }, [showModal, showLoginPromptModal])
 
     useEffect(() => {
         dispatch({ type: 'search', payload: { searchTerm: search } })
@@ -76,6 +84,7 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
                 {/* <Button onClick={() => setShowModal(true)} text={'+ Item'} navBar={true}/> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)}/>
+            <LoginPromptModal showLoginPromptModal={showLoginPromptModal} onClose={() => setShowLoginPromptModal(false)}/>
         </nav>
     )
 }

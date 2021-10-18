@@ -15,13 +15,14 @@
 .navBarDivSmall {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     /* border: 1px solid red; */
-    width:40%;
+    width:50%;
     gap: 15px;
+    
 }
 
 .navBarDivSmall button {
-    flex-grow: 0.8;
     height: 30px;
     border: none;
     background-color: transparent;
@@ -104,12 +105,13 @@
 }
 
 .menu {
+    border-top: 2px solid #444444;
     position: absolute;
-    background-color: #444444;
+    background-color: #232323;
     top: 68px;
     right: 0;
     z-index: 150;
-    width: 50%;
+    width: 65%;
     max-width: 300px;
     border-radius: 0 0 0 10px;
 }
@@ -118,12 +120,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px;
+    padding: 25px 15px;
     text-align: left;
+    border-bottom: 2px solid #444444;
+    color: #D1AE00
 }
 
 .menuItem p {
+    color: #d5d5d5;
     width: 80%;
+}
+
+.username {
+    font-size: 0.9rem;
 }
 
 .menuOverlay {
@@ -133,7 +142,7 @@
     height: 100vh;
     width:100vw;
     z-index: 149;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.274);
 }
 
 .navBar button {
@@ -144,17 +153,17 @@
     
 }
 
-/* .add .subMenuIcon{
+/* .add {
     color: #D1AE00;
-    font-size: 1.4rem;
+
 } */
 
 .subMenuIcon {
     font-size: 1.2rem;
 }
 
-.menuItem:first-child {
-    border-bottom: 2px solid #232323;
+.menuItem:last-child {
+    border-bottom: none;
 }
 
 

@@ -63,8 +63,20 @@
     padding: 10px;
     border-radius: 10px;
     background-color: transparent;
-
     transition: all 0.3s ease-in;
+    font-size: 14px;
+}
+
+.buttons a {
+    cursor: pointer;
+    min-width: 110px;
+    width: 35%;
+    max-width: 150px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: all 0.3s ease-in;
+    font-size: 14px;
 }
 
 .cancelBtn {
@@ -72,9 +84,9 @@
     color: #D5D5D5;
 }
 
-.deleteBtn {
-    border: 2px solid tomato;
-    color: tomato;
+.loginBtn {
+    border: 2px solid #D1AE00;
+    color: #D1AE00;
 }
 
 .cancelBtn:hover {
@@ -82,8 +94,8 @@
     color: #232323;
 }
 
-.deleteBtn:hover {
-    background-color: tomato;;
+.loginBtn:hover {
+    background-color: #D1AE00;
     color: #232323;
 }
 
@@ -94,6 +106,10 @@
         border-radius: 10px;
         border: 2px solid #D5D5D5;
         padding: 10px;
+    }
+
+    .buttons a {
+        width: 45%;
     }
 
     .body {

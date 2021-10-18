@@ -19,6 +19,13 @@
     gap: 3rem;
 }
 
+.navBarDivLarge {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 3rem;
+}
+
 .navBarDiv:last-child {
     justify-content: flex-end;
 }
@@ -28,11 +35,7 @@
     align-items: center;
     gap: 10px;
     line-height: 1;
-    font-size: 1rem;
-}
-
-.navBarAnchor {
-    
+    font-size: 0.9rem;
 }
 
 .searchContainer {
