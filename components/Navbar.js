@@ -3,8 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Button from './Button'
 import Modal from './Modal';
-import AddItem from './AddItem'
-import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown";
+import { useUser } from '@auth0/nextjs-auth0';
 import { MdSearch } from "@react-icons/all-files/md/MdSearch";
 import navbarStyle from '../styles/Navbar.module.css'
 import { useRouter } from 'next/router'
@@ -13,6 +12,7 @@ const Navbar = ({ dispatch }) => {
     const router = useRouter();
     const [showModal, setShowModal] = useState(false);
     const [search, setSearch] = useState('');
+    const { user, error, isLoading } = useUser();
 
     function handleSearchSubmit (e) {
         e.preventDefault();
@@ -28,13 +28,13 @@ const Navbar = ({ dispatch }) => {
         dispatch({ type: 'search', payload: { searchTerm: search } })
     }, [search])
 
-    // useEffect(() => {
-    //     if(showModal == true) {
-    //         document.body.style.overflow = "hidden"
-    //     } else {
-    //         document.body.style.overflow = "scroll"
-    //     }
-    // }, [showModal])
+    useEffect(() => {
+        if(showModal == true) {
+            document.body.style.overflow = "hidden"
+        } else {
+            document.body.style.overflow = "auto"
+        }
+    }, [showModal])
 
     return (
         <nav className={navbarStyle.navBar}>
@@ -56,14 +56,28 @@ const Navbar = ({ dispatch }) => {
             </div>
             <div className={navbarStyle.navBarDiv}>
                 <Button onClick={() => setShowModal(true)} text={'+ Add Item'} navBar={true}/>
-                <a className={navbarStyle.navBarAnchor}>
-                    <Image 
-                        src="/user-circle-solid.svg"
-                        height={40}
-                        width={40}
-                        className={navbarStyle.profileIcon}
-                    />
-                </a>
+                { user ?  (
+                    <a href="/api/auth/logout" className={navbarStyle.navBarAnchor}>
+                        <Image 
+                            src="/user-circle-solid.svg"
+                            height={30}
+                            width={30}
+                            className={navbarStyle.profileIcon}
+                        />
+                        <p className={navbarStyle.userText}>{user.name}</p>
+                    </a>
+                ) : (
+                    <a href="/api/auth/login" className={navbarStyle.navBarAnchor}>
+                        <Image 
+                            src="/user-circle-solid.svg"
+                            height={30}
+                            width={30}
+                            className={navbarStyle.profileIcon}
+                        />
+                        <p className={navbarStyle.userText}>Guest</p>
+                    </a>
+                )}
+                
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)}/>
         </nav>

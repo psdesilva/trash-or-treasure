@@ -23,8 +23,16 @@
     justify-content: flex-end;
 }
 
+.navBar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    line-height: 1;
+    font-size: 1rem;
+}
+
 .navBarAnchor {
-    margin-top: 5px;
+    
 }
 
 .searchContainer {

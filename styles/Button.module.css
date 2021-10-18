@@ -8,9 +8,11 @@
     padding: 15px 30px;
     font-size: 1rem;
     transition: all 0.3s ease-in;
+    cursor: pointer;
 }
 
 .navBarBtn {
+    cursor: pointer;
     color: #D1AE00;
     border: 2px solid #D1AE00;
     border-radius: 10px;

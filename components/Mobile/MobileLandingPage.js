@@ -3,10 +3,12 @@ import Modal from '../Modal';
 import AddItem from '../AddItem'
 import Link from 'next/link'
 import Button from '../Button'
+import { useUser } from '@auth0/nextjs-auth0';
 import LandingPageStyles from "../../styles/Mobile/MobileLandingPage.module.css"
 
 const MobileLandingPage = () => {
     const [showModal, setShowModal] = useState(false);
+    const { user, error, isLoading } = useUser();
 
     return (
         <div className={LandingPageStyles.landingPageDisplay}>
@@ -22,7 +24,7 @@ const MobileLandingPage = () => {
                 <Modal show={showModal} onClose={() => setShowModal(false)}>
                     <AddItem />
                 </Modal>
-                <a>Login/Register</a>
+                {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.nickname} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}
             </div>
             <div className={LandingPageStyles.overlay}></div>
         </div>

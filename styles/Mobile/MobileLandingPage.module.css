@@ -42,6 +42,16 @@
     font-weight: bold;
 }
 
+.login {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.loginText {
+    font-size: 0.9rem;
+}
+
 .buttons {
     width: 90%;
     align-items: center;

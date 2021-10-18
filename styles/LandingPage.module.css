@@ -50,6 +50,16 @@
     background-size: 40%;
 }
 
+.login {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.loginText {
+    font-size: 0.9rem;
+}
+
 .boxImage {
     position: absolute;
     top: 25%;

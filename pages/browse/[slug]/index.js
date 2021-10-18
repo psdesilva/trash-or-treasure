@@ -2,6 +2,7 @@ import Layout from '../../../components/Layout'
 import NestedLayout from '../../../components/NestedLayout'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 import Image from 'next/image'
 import itemStyle from '../../../styles/Item.module.css'
 import { useItems } from '../../../components/ItemContext'
@@ -9,18 +10,40 @@ import { FiArrowLeftCircle } from "@react-icons/all-files/fi/FiArrowLeftCircle";
 import { MdDescription } from "@react-icons/all-files/md/MdDescription";
 import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
 import { MdPhoneIphone } from "@react-icons/all-files/md/MdPhoneIphone";
+import { MdDeleteForever } from "@react-icons/all-files/md/MdDeleteForever";
 import useMediaQuery from '../../../hooks/MediaQuery'
+import { useUser } from '@auth0/nextjs-auth0';
+import DeleteConfirmationModal from '../../../components/DeleteConfirmationModal'
 
 const Item = ({ slug }) => {
     const isBreakPoint = useMediaQuery(799)
-    const { getSingleItem } = useItems()
+    const { getSingleItem, deleteItem } = useItems()
     const item = getSingleItem(slug)
     const router = useRouter()
+    const { user, error, isLoading } = useUser();
+    const [showDelete, setShowDelete] = useState(false);
+    const [itemToDelete, setItemToDelete] = useState(null);
+
+    function goBack (e) {
+      e.preventDefault();
+      router.push('/browse')
+    }
+
+    async function deleteCurrentItem (id) {
+      await router.push('/browse');
+      deleteItem(id);
+    }
+
+    function deleteConfirm (id) {
+      setItemToDelete(id);
+      setShowDelete(true);
+    }
 
     return (
         <div className={itemStyle.container}>
             <div className={itemStyle.back}>
-              <a href="#" onClick={() => router.push('/browse')}><FiArrowLeftCircle /></a>
+              <a href="#" onClick={goBack}><FiArrowLeftCircle /></a>
+              {user ? user.sub === item.user ? <button onClick={() => deleteConfirm(item.id)}><MdDeleteForever /></button> : '' : ''}
             </div>
             <div className={itemStyle.itemDetails}>
             { isBreakPoint ? <div className={itemStyle.name}><h1>{item.name}</h1></div> : ''}
@@ -60,6 +83,7 @@ const Item = ({ slug }) => {
                 </div>
               </div>
             </div>
+            <DeleteConfirmationModal setItemToDelete={setItemToDelete} itemToDelete={itemToDelete} showDelete={showDelete} onClose={() => setShowDelete(false)}/>
         </div>
     )
 }

@@ -4,11 +4,13 @@ import modalStyle from '../styles/Modal.module.css'
 import { MdClose } from "@react-icons/all-files/md/MdClose";
 import AddItem from './AddItem';
 import ItemAdded from './ItemAdded';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Modal = ({ show, onClose, children }) => {
     const [isBrowser, setIsBrowser] = useState(false);
     const [addItemDone, setAddItemDone] = useState(false);
     const [addedItem, setAddedItem] = useState({});
+    const { user, error, isLoading } = useUser();
 
     useEffect (() => {
         setIsBrowser(true);
@@ -27,7 +29,8 @@ const Modal = ({ show, onClose, children }) => {
                     <a href="#" onClick={handleClose}><MdClose className={modalStyle.closeBtn}/></a>
                 </div>
                 <div className={modalStyle.body}>
-                    {addItemDone ? <ItemAdded addedItem={addedItem} setAddItemDone={setAddItemDone} handleClose={handleClose}/> : <AddItem setAddItemDone={setAddItemDone} setAddedItem={setAddedItem}/>} 
+                    {user ? addItemDone ? <ItemAdded addedItem={addedItem} setAddItemDone={setAddItemDone} handleClose={handleClose}/> : <AddItem setAddItemDone={setAddItemDone} setAddedItem={setAddedItem}/> : <div className={modalStyle.loginContainer}><p>Please log in to add items</p><a href="/api/auth/login" >Login/Register</a></div>}
+                    {/* {addItemDone ? <ItemAdded addedItem={addedItem} setAddItemDone={setAddItemDone} handleClose={handleClose}/> : <AddItem setAddItemDone={setAddItemDone} setAddedItem={setAddedItem}/>}  */}
                 </div>
             </div>
         </div>
