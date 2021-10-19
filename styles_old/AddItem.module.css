@@ -1,0 +1,157 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* border: 1px solid green; */
+    width:100%;
+    justify-content: space-between;
+}
+
+.blockOne {
+    /* border: 1px solid blue; */
+    width: 100%;
+    height: 48%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockOneSmall {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+}
+
+.blockOneLarge {
+    width: 58%;
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+}
+
+.blockOneSmall label {
+    font-size: 0.9rem;
+}
+
+.formElement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.formInput {
+    background-color: #444444;
+    border: none;
+    padding: 10px;
+    color: #D5D5D5;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.contactElement {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.contactElement select {
+    width: 50%;
+}
+
+.textAreaContainer {
+    height: 100%;
+}
+
+.textArea {
+    height: 100%;
+    resize: none;
+    font-family: inherit;
+}
+
+.imageUploadContainer {
+    position: relative;
+    height: 100%;
+    background-color: #444444;
+    border-radius: 10px;
+}
+
+.imageUploadContainer input {
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.spinner {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    background-color: #444444;
+    background-image: url("../public/spinner.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50%;
+}
+
+.hide {
+    display: none;
+}
+
+.imageUploadContainer label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    /* background-color: rgba(0, 0, 0, 0.534); */
+    border-radius: 10px;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+.imageUploadContainer label h5{
+    font-size: 3.5rem;
+}
+
+.imageUploadContainer input:focus-visible + label {
+    outline: 1px solid #D5D5D5;
+}
+
+.form {
+    height: 100%;
+    width:100%;
+}
+
+@media screen and (max-width: 799px) {
+    .container {
+        overflow-y: scroll;
+    }
+
+    .blockOne {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .blockOneSmall {
+        width: 100%;
+        min-height: 250px;
+    }
+
+    .blockOneLarge {
+        width: 100%;
+    }
+}
+

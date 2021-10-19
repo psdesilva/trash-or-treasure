@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import modalStyle from '../styles/LoginPromptModal.module.css'
-import { MdClose } from "@react-icons/all-files/md/MdClose";
-import { useItems } from './ItemContext'
 import { useRouter } from 'next/router'
+import { useItems } from './ItemContext'
+import { MdClose } from "@react-icons/all-files/md/MdClose";
+import modalStyle from '../styles/DeleteModal.module.css'
 
-const LoginPromptModal = ({ showLoginPromptModal, onClose, setShowLoginPromptModal }) => {
+const DeleteConfirmationModal = ({ showDelete, onClose, itemToDelete, setItemToDelete }) => {
     const router = useRouter()
     const [isBrowser, setIsBrowser] = useState(false);
     const { deleteItem } = useItems()
@@ -17,19 +17,25 @@ const LoginPromptModal = ({ showLoginPromptModal, onClose, setShowLoginPromptMod
     const handleClose = (e) => {
         e.preventDefault();
         onClose();
+        setItemToDelete(null)
     };
 
-    const modalContent = showLoginPromptModal ? (
+    async function deleteCurrentItem (id) {
+        await router.push('/browse');
+        deleteItem(id);
+      }
+
+    const modalContent = showDelete ? (
         <div className={modalStyle.overlay}>
             <div className={modalStyle.modal}>
                 <div className={modalStyle.header}>
                     <a href="#" onClick={handleClose}><MdClose className={modalStyle.closeBtn}/></a>
                 </div>
                 <div className={modalStyle.body}>
-                    <p>Please Log In to Add Items</p>
+                    <p>Are you sure you want to delete the item?</p>
                     <div className={modalStyle.buttons}>
                         <button className={modalStyle.cancelBtn} onClick={handleClose}>Cancel</button>
-                        <a className={modalStyle.loginBtn} href="/api/auth/login">Login/Register</a>
+                        <button className={modalStyle.deleteBtn} onClick={() => deleteCurrentItem(itemToDelete)}>Delete</button>
                     </div>
                 </div>
             </div>
@@ -46,4 +52,4 @@ const LoginPromptModal = ({ showLoginPromptModal, onClose, setShowLoginPromptMod
     }
 }
 
-export default LoginPromptModal
+export default DeleteConfirmationModal

@@ -1,0 +1,47 @@
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 18px;
+    background-color: #232323;
+    color: #D5D5D5;
+
+    scrollbar-width: thin;
+    scrollbar-color: #D5D5D5 #444444;
+}
+
+body {
+  
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #444444;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #D5D5D5;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+@media screen and (max-width: 1200px) {
+  html, body {
+    font-size: 16px;
+  }
+}

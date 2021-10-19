@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import Button from './Button'
-import addItemStyle from '../styles/AddItem.module.css'
-import { useItems } from './ItemContext'
 import { v4 as uuidv4 } from 'uuid';
-import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
 import { useUser } from '@auth0/nextjs-auth0';
+import { useItems } from './ItemContext'
+import Button from './Button'
+import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
+import addItemStyle from '../styles/AddItem.module.css'
 
 const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const id = uuidv4();
@@ -12,7 +12,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const [itemImage, setItemImage] = useState(null);
     const [loadingImage, setLoadingImage] = useState(false)
     const [imageText, setImageText] = useState("Click to Upload Image")
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     function uploadImage(e) {
         setLoadingImage(true);

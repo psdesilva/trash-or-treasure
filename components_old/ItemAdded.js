@@ -1,7 +1,11 @@
-import Button from "./Button"
-import Image from 'next/image'
-import itemAddedStyle from '../styles/ItemAdded.module.css'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Button from "./Button"
+import { MdDescription } from "@react-icons/all-files/md/MdDescription";
+import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
+import { MdPhoneIphone } from "@react-icons/all-files/md/MdPhoneIphone";
+import itemAddedStyle from '../styles/ItemAdded.module.css'
+
 
 const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
     const router = useRouter();

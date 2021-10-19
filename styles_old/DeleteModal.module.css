@@ -77,15 +77,18 @@
     color: tomato;
 }
 
-.cancelBtn:hover {
-    background-color: #D5D5D5;
-    color: #232323;
+@media (hover: hover) {
+    .cancelBtn:hover {
+        background-color: #D5D5D5;
+        color: #232323;
+    }
+    
+    .deleteBtn:hover {
+        background-color: tomato;;
+        color: #232323;
+    }
 }
 
-.deleteBtn:hover {
-    background-color: tomato;;
-    color: #232323;
-}
 
 @media screen and (max-width: 799px) {
     .modal {

@@ -42,9 +42,11 @@
     transition: all 0.3s ease-in;
 }
 
-.back button:hover {
-    background-color: tomato;
-    color: #232323;
+@media (hover: hover) {
+    .back button:hover {
+        background-color: tomato;
+        color: #232323;
+    }
 }
 
 .itemDetails {

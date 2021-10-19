@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import modalStyle from '../styles/LoginPromptModal.module.css'
 import { MdClose } from "@react-icons/all-files/md/MdClose";
-import { useItems } from './ItemContext'
-import { useRouter } from 'next/router'
+import modalStyle from '../styles/LoginPromptModal.module.css'
 
-const LoginPromptModal = ({ showLoginPromptModal, onClose, setShowLoginPromptModal }) => {
-    const router = useRouter()
+const LoginPromptModal = ({ showLoginPromptModal, onClose }) => {
     const [isBrowser, setIsBrowser] = useState(false);
-    const { deleteItem } = useItems()
 
     useEffect (() => {
         setIsBrowser(true);
