@@ -24,7 +24,7 @@ const MobileLandingPage = () => {
                 <Modal show={showModal} onClose={() => setShowModal(false)}>
                     <AddItem />
                 </Modal>
-                {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.nickname} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}
+                {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.name} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}
             </div>
             <div className={LandingPageStyles.overlay}></div>
         </div>
