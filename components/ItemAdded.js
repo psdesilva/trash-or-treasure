@@ -1,7 +1,11 @@
-import Button from "./Button"
-import Image from 'next/image'
-import itemAddedStyle from '../styles/ItemAdded.module.css'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
+import Button from "./Button"
+import { MdDescription } from "@react-icons/all-files/md/MdDescription";
+import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
+import { MdPhoneIphone } from "@react-icons/all-files/md/MdPhoneIphone";
+import itemAddedStyle from '../styles/ItemAdded.module.css'
+
 
 const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
     const router = useRouter();
@@ -30,10 +34,13 @@ const ItemAdded = ({ setAddItemDone, handleClose, addedItem }) => {
                 </div>
                 <div className={itemAddedStyle.separator}></div>
                 <div className={itemAddedStyle.info}>
-                    <p>Location: {addedItem.location}</p>
-                    <p>{Object.entries(addedItem.contact)[0][0]}: {Object.entries(addedItem.contact)[0][1]}</p>
-                    <p>Description: {addedItem.description}</p>
-                    <p>{`${addedItem.used} - ${addedItem.broken}`}</p>
+                    <p><span className={itemAddedStyle.bold}>Location:</span> {addedItem.location}</p>
+                    <p><span className={itemAddedStyle.bold}>{Object.entries(addedItem.contact)[0][0]}:</span> {Object.entries(addedItem.contact)[0][1]}</p>
+                    <p><span className={itemAddedStyle.bold}>Description:</span> {addedItem.description}</p>
+                    <div className={itemAddedStyle.condition}>
+                        <p>{addedItem.used}</p>
+                        <p>{addedItem.broken}</p>
+                  </div>
                 </div>
             </div>
             <div className={itemAddedStyle.buttons}>

@@ -1,18 +1,17 @@
 import { useState } from 'react'
+import Link from 'next/link'
+import { useUser } from '@auth0/nextjs-auth0';
 import Modal from '../Modal';
 import AddItem from '../AddItem'
-import Link from 'next/link'
 import Button from '../Button'
-import { useUser } from '@auth0/nextjs-auth0';
 import LandingPageStyles from "../../styles/Mobile/MobileLandingPage.module.css"
 
 const MobileLandingPage = () => {
     const [showModal, setShowModal] = useState(false);
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     return (
         <div className={LandingPageStyles.landingPageDisplay}>
-            
             <div className={LandingPageStyles.landingPageDisplayText}>
                 <h1 className={LandingPageStyles.heading}>TRASH OR TREASURE</h1>
                 <p>{`Moving? Spring cleaning? Just got too much stuff? Don't throw it away, someone out there might be looking for it!`}</p>

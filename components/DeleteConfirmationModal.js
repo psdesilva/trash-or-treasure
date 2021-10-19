@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import modalStyle from '../styles/DeleteModal.module.css'
-import { MdClose } from "@react-icons/all-files/md/MdClose";
-import { useItems } from './ItemContext'
 import { useRouter } from 'next/router'
+import { useItems } from './ItemContext'
+import { MdClose } from "@react-icons/all-files/md/MdClose";
+import modalStyle from '../styles/DeleteModal.module.css'
 
 const DeleteConfirmationModal = ({ showDelete, onClose, itemToDelete, setItemToDelete }) => {
     const router = useRouter()

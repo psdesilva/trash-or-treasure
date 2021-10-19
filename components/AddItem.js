@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import Button from './Button'
-import addItemStyle from '../styles/AddItem.module.css'
-import { useItems } from './ItemContext'
 import { v4 as uuidv4 } from 'uuid';
-import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
 import { useUser } from '@auth0/nextjs-auth0';
+import { useItems } from './ItemContext'
+import Button from './Button'
+import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
+import addItemStyle from '../styles/AddItem.module.css'
 
 const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const id = uuidv4();
@@ -12,7 +12,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const [itemImage, setItemImage] = useState(null);
     const [loadingImage, setLoadingImage] = useState(false)
     const [imageText, setImageText] = useState("Click to Upload Image")
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     function uploadImage(e) {
         setLoadingImage(true);
@@ -85,7 +85,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                         </div>
                         <div className={addItemStyle.formElement}>
                             <label htmlFor="itemLocation">Location:</label>
-                            <input type="text" name="itemLocation" id="itemLocation" className={addItemStyle.formInput} required/>
+                            <input type="text" name="itemLocation" id="itemLocation" maxLength="50" className={addItemStyle.formInput} required/>
                         </div>
                         <div className={addItemStyle.formElement}>
                             <label htmlFor="itemType">Type:</label>
@@ -113,7 +113,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                                     <option value="Facebook">Facebook</option>
                                     <option value="Twitter">Twitter</option>
                                 </select>
-                                <input type="text" name="contact" id="contact" className={addItemStyle.formInput} required/>
+                                <input type="text" name="contact" id="contact" maxLength="50" className={addItemStyle.formInput} required/>
                             </div>
                         </div>
                         <div className={`${addItemStyle.formElement} ${addItemStyle.textAreaContainer}`}>

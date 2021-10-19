@@ -1,12 +1,12 @@
-import navbarStyle from '../../styles/Mobile/MobileNavbar.module.css'
 import { MdAdd } from "@react-icons/all-files/md/MdAdd";
 import { BiLogIn } from "@react-icons/all-files/bi/BiLogIn";
 import { BiLogOut } from "@react-icons/all-files/bi/BiLogOut";
 import { FaUser } from "@react-icons/all-files/fa/FaUser";
 import { useUser } from '@auth0/nextjs-auth0';
+import navbarStyle from '../../styles/Mobile/MobileNavbar.module.css'
 
 const MobileMenu = ({ setOpenMenu, openMenu, openModal }) => {
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     return (
         <div onClick={() => setOpenMenu(!openMenu)} className={`${navbarStyle.menuOverlay} ${ openMenu ? `` : `${navbarStyle.hidden}` }`}>

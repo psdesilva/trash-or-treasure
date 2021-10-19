@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import ItemCard from './ItemCard'
 import browseStyle from '../styles/Browse.module.css'
-import Link from 'next/link'
+
 
 const ItemList = ({ filteredItems }) => {
 

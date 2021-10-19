@@ -23,19 +23,19 @@
 
 .back a {
     font-size: 2.5rem;
-    flex-shrink: 1;
     display: block;
     line-height: 0;
 }
 
 .back button {
-    font-size: 2.1rem;
+    font-size: 1.5rem;
     margin-right: 2%;
-    width: 60px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    border-radius: 50%;
     background-color: transparent;
     border: 2px solid tomato;
     color: tomato;
@@ -159,9 +159,22 @@
         width: 100%;
         height: 100%;
     }
+
     .back {
+        padding: 0px 5px;
+    }
+
+    .back a {
         font-size: 2rem;
     }
+
+    .back button {
+        width: 30px;
+        height: 30px;
+        font-size: 1.2rem;
+        margin-right: 0;
+    }
+
     .itemDetails {
         flex-direction: column;
         width: 95%;
@@ -185,6 +198,10 @@
     }
 
     .infoText {
-        gap: 20px;
+        gap: 30px;
+    }
+
+    .condition {
+        justify-content: center;
     }
 }

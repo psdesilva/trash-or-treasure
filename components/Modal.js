@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import modalStyle from '../styles/Modal.module.css'
-import { MdClose } from "@react-icons/all-files/md/MdClose";
+import { useUser } from '@auth0/nextjs-auth0';
 import AddItem from './AddItem';
 import ItemAdded from './ItemAdded';
-import { useUser } from '@auth0/nextjs-auth0';
+import { MdClose } from "@react-icons/all-files/md/MdClose";
+import modalStyle from '../styles/Modal.module.css'
 
 const Modal = ({ show, onClose, children }) => {
     const [isBrowser, setIsBrowser] = useState(false);
     const [addItemDone, setAddItemDone] = useState(false);
     const [addedItem, setAddedItem] = useState({});
-    const { user, error, isLoading } = useUser();
+    const { user } = useUser();
 
     useEffect (() => {
         setIsBrowser(true);
@@ -30,7 +30,6 @@ const Modal = ({ show, onClose, children }) => {
                 </div>
                 <div className={modalStyle.body}>
                     {user ? addItemDone ? <ItemAdded addedItem={addedItem} setAddItemDone={setAddItemDone} handleClose={handleClose}/> : <AddItem setAddItemDone={setAddItemDone} setAddedItem={setAddedItem}/> : <div className={modalStyle.loginContainer}><p>Please log in to add items</p><a href="/api/auth/login" >Login/Register</a></div>}
-                    {/* {addItemDone ? <ItemAdded addedItem={addedItem} setAddItemDone={setAddItemDone} handleClose={handleClose}/> : <AddItem setAddItemDone={setAddItemDone} setAddedItem={setAddedItem}/>}  */}
                 </div>
             </div>
         </div>

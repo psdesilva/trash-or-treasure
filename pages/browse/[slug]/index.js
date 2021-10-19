@@ -1,6 +1,5 @@
 import Layout from '../../../components/Layout'
 import NestedLayout from '../../../components/NestedLayout'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import Image from 'next/image'

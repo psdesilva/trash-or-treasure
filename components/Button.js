@@ -1,5 +1,4 @@
 import buttonStyle from '../styles/Button.module.css'
-import React from 'react'
 
 const Button = ({ text, navBar, onClick }) => {
     return (
