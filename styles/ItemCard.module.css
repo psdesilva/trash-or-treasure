@@ -9,25 +9,27 @@
     background-color: black;
 }
 
-.container:hover {
-    transform: scale(1.05, 1.05);
-}
-
-.container:hover .title{
-    white-space: normal;
-    transform: translateY(-200px);
-}
-
-.container:hover .text{
-    transform: translateY(-200px);
-}
-
-.container:hover .image {
-    opacity: 20%;
-}
-
-.container:hover .overlay {
-    opacity: 0;
+@media (hover: hover) {
+    .container:hover {
+        transform: scale(1.05, 1.05);
+    }
+    
+    .container:hover .title{
+        white-space: normal;
+        transform: translateY(-200px);
+    }
+    
+    .container:hover .text{
+        transform: translateY(-200px);
+    }
+    
+    .container:hover .image {
+        opacity: 20%;
+    }
+    
+    .container:hover .overlay {
+        opacity: 0;
+    }    
 }
 
 .image {
