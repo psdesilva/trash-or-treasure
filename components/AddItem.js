@@ -53,6 +53,23 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
             container.current.scrollTo(0,0)
             setImageText('Please Upload Image!')
         } else {
+            let phoneNumber;
+            if (contactType.value === 'WhatsApp') {
+                if (!contact.value.startsWith('94')) {
+                    if (contact.value.startsWith('0') && contact.value.length == 10) {
+                        phoneNumber = '94' + contact.value.substring(1) 
+                    } else if (contact.value.length == 9) {
+                        phoneNumber = '94' + contact.value 
+                    } else if (contact.value.startsWith('+94')) {
+                        phoneNumber = '94' + contact.value.substring(3)
+                    } else {
+                        phoneNumber = contact.value
+                    }
+                } else {
+                    phoneNumber = contact.value
+                }
+            }
+
             const newItem = {
                 user: user.sub,
                 id: id,
@@ -60,7 +77,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                 img: itemImage,
                 location: itemLocation.value,
                 type: itemType.value,
-                contact: { [contactType.value]: contact.value },
+                contact: { [contactType.value]: (contactType.value === 'WhatsApp') ? phoneNumber : contact.value },
                 used: used.value,
                 broken: broken.value,
                 description: description.value || 'N/A'

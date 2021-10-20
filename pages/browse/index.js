@@ -13,7 +13,7 @@ const Browse = () => {
 
     if (isLoading) {
       return (
-        <h1>loading!</h1>
+        <h1 style={{textAlign: 'center'}}>Loading...</h1>
       )
     }
 

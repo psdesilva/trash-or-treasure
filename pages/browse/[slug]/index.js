@@ -39,6 +39,25 @@ const Item = ({ slug }) => {
       setShowDelete(true);
     }
 
+    function generateContact (contactObject, children) {
+      switch (Object.entries(contactObject)[0][0]) {
+        case 'Phone':
+          return <a href={`tel:${Object.entries(contactObject)[0][1]}`}>{children}</a>
+        case 'WhatsApp':
+            return <a href={`https://wa.me/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+        case 'Instagram':
+          return <a href={`https://www.instagram.com/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+        case 'Email':
+          return <a href={`mailto:${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+        case 'Twitter':
+          return <a href={`https://twitter.com/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+        case 'Facebook':
+          return <a href={`https://www.facebook.com/search/top?q=${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+        default:
+          return children
+      }
+    }
+
     return (
         <div className={itemStyle.container}>
             <div className={itemStyle.back}>
@@ -68,7 +87,8 @@ const Item = ({ slug }) => {
                     <div className={itemStyle.individualInfoIcon}>
                       <MdPhoneIphone />
                     </div>
-                    <p><span className={itemStyle.bold}>{Object.entries(item.contact)[0][0]}:&#160;</span> {Object.entries(item.contact)[0][1]}</p>
+                    {generateContact(item.contact, <p className={itemStyle.contact}><span className={itemStyle.bold}>{Object.entries(item.contact)[0][0]}:&#160;</span> {Object.entries(item.contact)[0][1]}</p>)}
+                    {/* <p><span className={itemStyle.bold}>{Object.entries(item.contact)[0][0]}:&#160;</span> {Object.entries(item.contact)[0][1]}</p> */}
                   </div>
                   <div className={itemStyle.individualInfo}>
                     <div className={itemStyle.individualInfoIcon}>
