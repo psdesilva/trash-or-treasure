@@ -55,6 +55,13 @@
     width: 100%;
 }
 
+.formElement select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: url("../public/chevron-down.svg") 95% / 15% no-repeat #444444;
+    background-size: 15px 15px;
+}
+
 .contactElement {
     width: 100%;
     display: flex;

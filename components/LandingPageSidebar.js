@@ -17,7 +17,6 @@ const LandingPageSidebar = () => {
             <div className={LandingPageStyles.landingPageSidebarContent}>
                 <p>What would you like to do today?</p>
                 {user ? <Button text={'List Your Trash'} onClick={() => setShowModal(true)}/> : <Button text={'List Your Trash'} onClick={() => setShowLoginPromptModal(true)}/>}
-                {/* <Button text={'List Your Trash'} onClick={() => setShowModal(true)}/> */}
                 <Link href="/browse"><a><Button text={'Browse Treasures'}/></a></Link>
                 <Modal show={showModal} onClose={() => setShowModal(false)}/>
                 {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.name} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}

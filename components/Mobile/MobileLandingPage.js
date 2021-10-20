@@ -21,7 +21,7 @@ const MobileLandingPage = () => {
                 <p>{`One man's trash is another man's treasure.`}</p>
             </div>
             <div className={LandingPageStyles.buttons}>
-            {user ? <Button text={'List Your Trash'} onClick={() => setShowModal(true)}/> : <Button text={'List Your Trash'} onClick={() => setShowLoginPromptModal(true)}/>}
+                {user ? <Button text={'List Your Trash'} onClick={() => setShowModal(true)}/> : <Button text={'List Your Trash'} onClick={() => setShowLoginPromptModal(true)}/>}
                 <Link href="/browse"><a><Button text={'Browse Treasures'}/></a></Link>
                 <Modal show={showModal} onClose={() => setShowModal(false)}/>
                 {user ? <p className={LandingPageStyles.loginText}>Logged in as {user.name} <a href="/api/auth/logout" className={LandingPageStyles.login}>Logout</a> </p> : <a href="/api/auth/login" className={LandingPageStyles.login}>Login/Register</a>}

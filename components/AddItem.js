@@ -5,6 +5,7 @@ import { useItems } from './ItemContext'
 import { v4 as uuidv4 } from 'uuid';
 import { BsUpload } from "@react-icons/all-files/bs/BsUpload";
 import { useUser } from '@auth0/nextjs-auth0';
+import { BiChevronDown } from "@react-icons/all-files/bi/BiChevronDown";
 
 const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const id = uuidv4();
