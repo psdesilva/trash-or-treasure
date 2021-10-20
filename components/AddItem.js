@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Button from './Button'
 import addItemStyle from '../styles/AddItem.module.css'
 import { useItems } from './ItemContext'
@@ -14,6 +14,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const [loadingImage, setLoadingImage] = useState(false)
     const [imageText, setImageText] = useState("Click to Upload Image")
     const { user, error, isLoading } = useUser();
+    const container = useRef();
 
     function uploadImage(e) {
         setLoadingImage(true);
@@ -48,19 +49,23 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newItem = {
-            user: user.sub,
-            id: id,
-            name: itemName.value,
-            img: itemImage,
-            location: itemLocation.value,
-            type: itemType.value,
-            contact: { [contactType.value]: contact.value },
-            used: used.value,
-            broken: broken.value,
-            description: description.value || 'N/A'
-        }
-        if (itemImage !== null) {
+        if (itemImage === null) {
+            setImageText('Please Upload Image!')
+            container.current.scrollTo(0,0)
+        } else {
+            const newItem = {
+                user: user.sub,
+                id: id,
+                name: itemName.value,
+                img: itemImage,
+                location: itemLocation.value,
+                type: itemType.value,
+                contact: { [contactType.value]: contact.value },
+                used: used.value,
+                broken: broken.value,
+                description: description.value || 'N/A'
+            } 
+
             addItem(newItem);
             setAddedItem(newItem);
             setAddItemDone(true);
@@ -70,13 +75,13 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
  
     return (
         <form action="" id="addItemForm" onSubmit={handleSubmit} className={addItemStyle.form}>
-            <div className={addItemStyle.container}>
+            <div className={addItemStyle.container} ref={container}>
                 <div className={addItemStyle.blockOne}>
                     <div className={addItemStyle.blockOneSmall}>
                         <div className={addItemStyle.imageUploadContainer} style={{backgroundImage: itemImage ? `url(${itemImage})`: '', backgroundPosition: 'center', backgroundSize: 'cover', backgroundRepeat:'no-repeat'}}>
                             <div className={`${addItemStyle.spinner} ${loadingImage ? '': addItemStyle.hide}`}></div>
-                            <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage} required/>
-                            <label htmlFor="itemImage" className={`${itemImage ? addItemStyle.overlay: ''}`}><h5><BsUpload /></h5><p>{imageText}</p></label>
+                            <input type="file" accept="image/*" name="itemImage" id="itemImage" onChange={uploadImage}/>
+                            <label htmlFor="itemImage" className={`${itemImage ? addItemStyle.overlay: ''}`}><h5><BsUpload /></h5><p className={`${imageText == "Please Upload Image!" ? addItemStyle.imageError: ''}`}>{imageText}</p></label>
                         </div>
                     </div>
                     <div className={addItemStyle.blockOneLarge}>
