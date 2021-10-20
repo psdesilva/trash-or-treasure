@@ -44,15 +44,15 @@ const Item = ({ slug }) => {
         case 'Phone':
           return <a href={`tel:${Object.entries(contactObject)[0][1]}`}>{children}</a>
         case 'WhatsApp':
-            return <a href={`https://wa.me/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+            return <a href={`https://wa.me/${Object.entries(contactObject)[0][1]}`} target="_blank" rel="noopener noreferrer">{children}</a>
         case 'Instagram':
-          return <a href={`https://www.instagram.com/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+          return <a href={`https://www.instagram.com/${Object.entries(contactObject)[0][1]}`} target="_blank" rel="noopener noreferrer">{children}</a>
         case 'Email':
-          return <a href={`mailto:${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+          return <a href={`mailto:${Object.entries(contactObject)[0][1]}`} target="_blank" rel="noopener noreferrer">{children}</a>
         case 'Twitter':
-          return <a href={`https://twitter.com/${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+          return <a href={`https://twitter.com/${Object.entries(contactObject)[0][1]}`} target="_blank" rel="noopener noreferrer">{children}</a>
         case 'Facebook':
-          return <a href={`https://www.facebook.com/search/top?q=${Object.entries(contactObject)[0][1]}`} target="_blank">{children}</a>
+          return <a href={`https://www.facebook.com/search/top?q=${Object.entries(contactObject)[0][1]}`} target="_blank" rel="noopener noreferrer">{children}</a>
         default:
           return children
       }
