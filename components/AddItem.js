@@ -50,8 +50,8 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (itemImage === null) {
-            setImageText('Please Upload Image!')
             container.current.scrollTo(0,0)
+            setImageText('Please Upload Image!')
         } else {
             const newItem = {
                 user: user.sub,
