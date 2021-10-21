@@ -53,21 +53,29 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
             container.current.scrollTo(0,0)
             setImageText('Please Upload Image!')
         } else {
-            let phoneNumber;
+            let contactDetail;
             if (contactType.value === 'WhatsApp') {
                 if (!contact.value.startsWith('94')) {
                     if (contact.value.startsWith('0') && contact.value.length == 10) {
-                        phoneNumber = '94' + contact.value.substring(1) 
+                        contactDetail = '94' + contact.value.substring(1) 
                     } else if (contact.value.length == 9) {
-                        phoneNumber = '94' + contact.value 
+                        contactDetail = '94' + contact.value 
                     } else if (contact.value.startsWith('+94')) {
-                        phoneNumber = '94' + contact.value.substring(3)
+                        contactDetail = '94' + contact.value.substring(3)
                     } else {
-                        phoneNumber = contact.value
+                        contactDetail = contact.value
                     }
                 } else {
-                    phoneNumber = contact.value
+                    contactDetail = contact.value
                 }
+            } else if (contactType.value === 'Instagram') {
+                if (contact.value.startsWith('@')) {
+                    contactDetail = contact.value.substring(1)
+                } else {
+                    contactDetail = contact.value
+                }
+            } else {
+                contactDetail = contact.value
             }
 
             const newItem = {
@@ -77,7 +85,7 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
                 img: itemImage,
                 location: itemLocation.value,
                 type: itemType.value,
-                contact: { [contactType.value]: (contactType.value === 'WhatsApp') ? phoneNumber : contact.value },
+                contact: { [contactType.value]: contactDetail },
                 used: used.value,
                 broken: broken.value,
                 description: description.value || 'N/A'
