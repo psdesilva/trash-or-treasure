@@ -15,7 +15,7 @@ const MobileMenu = ({ setOpenMenu, openMenu, openModal, setShowItemModal }) => {
     }
 
     return (
-        <div onClick={() => setOpenMenu(!openMenu)} className={`${navbarStyle.menuOverlay} ${ openMenu ? `` : `${navbarStyle.hidden}` }`}>
+        <div onClick={() => setOpenMenu(!openMenu)} className={`${navbarStyle.menuOverlay} ${ openMenu ? `` : navbarStyle.hidden }`}>
             <div className={navbarStyle.menu}>
                 {user ? 
                     <div className={`${navbarStyle.menuItem}`}>
@@ -40,10 +40,12 @@ const MobileMenu = ({ setOpenMenu, openMenu, openModal, setShowItemModal }) => {
                             </div>
                         </a>
                     </> : 
-                    <a href="/api/auth/login"><div className={navbarStyle.menuItem}>
-                        <BiLogIn className={navbarStyle.subMenuIcon}/>
-                        <p>Log-in / Register</p>
-                    </div></a>
+                    <a href="/api/auth/login">
+                        <div className={navbarStyle.menuItem}>
+                            <BiLogIn className={navbarStyle.subMenuIcon}/>
+                            <p>Log-in / Register</p>
+                        </div>
+                    </a>
                 }
             </div>
         </div>
