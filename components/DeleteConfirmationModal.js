@@ -5,7 +5,7 @@ import { MdClose } from "@react-icons/all-files/md/MdClose";
 import { useItems } from './ItemContext'
 import { useRouter } from 'next/router'
 
-const DeleteConfirmationModal = ({ showDelete, onClose, itemToDelete, setItemToDelete }) => {
+const DeleteConfirmationModal = ({ showDelete, onClose, itemToDelete, setItemToDelete, setShowDelete }) => {
     const router = useRouter()
     const [isBrowser, setIsBrowser] = useState(false);
     const { deleteItem } = useItems()
@@ -21,9 +21,12 @@ const DeleteConfirmationModal = ({ showDelete, onClose, itemToDelete, setItemToD
     };
 
     async function deleteCurrentItem (id) {
-        await router.push('/browse');
+        setShowDelete(false);
+        if (router.query.slug === id) {
+            await router.push('/browse');
+        }
         deleteItem(id);
-      }
+    }
 
     const modalContent = showDelete ? (
         <div className={modalStyle.overlay}>

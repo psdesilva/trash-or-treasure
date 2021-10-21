@@ -11,6 +11,8 @@ import navbarStyle from '../../styles/Mobile/MobileNavbar.module.css'
 import { useRouter } from 'next/router'
 import MobileMenu from './MobileMenu';
 import { useUser } from '@auth0/nextjs-auth0';
+import UserItemsModal from '../UserItemsModal';
+import DeleteConfirmationModal from '../DeleteConfirmationModal';
 
 const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     const router = useRouter();
@@ -19,6 +21,9 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     const [search, setSearch] = useState('');
     const [searchBarView, setSearchBarView] = useState(false);
     const [openMenu, setOpenMenu] = useState(false)
+    const [showItemModal, setShowItemModal] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
+    const [itemToDelete, setItemToDelete] = useState(null);
     const { user, error, isLoading } = useUser();
 
     function handleSearchSubmit (e) {
@@ -43,12 +48,12 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
     }
 
     useEffect(() => {
-        if(showModal || showLoginPromptModal == true) {
+        if(showModal || showLoginPromptModal | showItemModal == true) {
             document.body.style.overflow = "hidden"
         } else {
             document.body.style.overflow = "auto"
         }
-    }, [showModal, showLoginPromptModal])
+    }, [showModal, showLoginPromptModal, showItemModal])
 
     useEffect(() => {
         dispatch({ type: 'search', payload: { searchTerm: search } })
@@ -80,11 +85,13 @@ const MobileNavbar = ({ dispatch, setShowFilters, showFilters }) => {
                     <div onClick={() => setSearchBarView(!searchBarView)} className={`${navbarStyle.overlay} ${ searchBarView ? `` : `${navbarStyle.hidden}` }`}></div>
                 </form>
                 <button onClick={() => setOpenMenu(!openMenu)}><MdMenu className={navbarStyle.menuIcon}/></button>
-                { openMenu ? <MobileMenu setOpenMenu={setOpenMenu} openMenu={openMenu} openModal={openModal}/> : ''}
+                { openMenu ? <MobileMenu setOpenMenu={setOpenMenu} openMenu={openMenu} openModal={openModal} setShowItemModal={setShowItemModal}/> : ''}
                 {/* <Button onClick={() => setShowModal(true)} text={'+ Item'} navBar={true}/> */}
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)}/>
             <LoginPromptModal showLoginPromptModal={showLoginPromptModal} onClose={() => setShowLoginPromptModal(false)}/>
+            <UserItemsModal show={showItemModal} onClose={() => setShowItemModal(false)} setItemToDelete={setItemToDelete} setShowDelete={setShowDelete}/>
+            <DeleteConfirmationModal setItemToDelete={setItemToDelete} itemToDelete={itemToDelete} showDelete={showDelete} onClose={() => setShowDelete(false)} setShowDelete={setShowDelete}/>
         </nav>
     )
 }

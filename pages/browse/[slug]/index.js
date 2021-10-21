@@ -120,7 +120,7 @@ const Item = ({ slug }) => {
               </div>
             </div>
           </div>
-          <DeleteConfirmationModal setItemToDelete={setItemToDelete} itemToDelete={itemToDelete} showDelete={showDelete} onClose={() => setShowDelete(false)}/>
+          <DeleteConfirmationModal setItemToDelete={setItemToDelete} itemToDelete={itemToDelete} showDelete={showDelete} onClose={() => setShowDelete(false)} setShowDelete={setShowDelete}/>
       </div>
     )
   }
