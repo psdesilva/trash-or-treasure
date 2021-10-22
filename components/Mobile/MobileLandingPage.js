@@ -18,8 +18,8 @@ const MobileLandingPage = () => {
             <div className={LandingPageStyles.landingPageDisplayText}>
                 <h1 className={LandingPageStyles.heading}>TRASH <span className={LandingPageStyles.or}>OR</span> TREASURE</h1>
                 
-                <p>Moving? Spring cleaning? Just got too much stuff? Don't throw it away, someone out there might be looking for it!</p>
-                <p>One man's trash is another man's treasure.</p>
+                <p>{`Moving? Spring cleaning? Just got too much stuff? Don't throw it away, someone out there might be looking for it!`}</p>
+                <p>{`One man's trash is another man's treasure.`}</p>
             </div>
             <div className={LandingPageStyles.buttons}>
                 {user ? <Button text={'List Your Trash'} onClick={() => setShowModal(true)}/> : <Button text={'List Your Trash'} onClick={() => setShowLoginPromptModal(true)}/>}

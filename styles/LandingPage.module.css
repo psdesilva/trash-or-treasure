@@ -64,6 +64,7 @@
     word-spacing: 1px;
     line-height: 1.8;
     font-size: 1.2rem;
+    white-space: pre-line;
 }
 
 .landingPageDisplayText p:last-child {
