@@ -132,6 +132,13 @@
     }
 }
 
+@media screen and (max-width: 1080px) {
+    .landingPageDisplay {
+        width: 80%;
+    }
+}
+
+
 @media screen and (max-width: 930px) {
     .heading {
         font-size: 2.5rem;
