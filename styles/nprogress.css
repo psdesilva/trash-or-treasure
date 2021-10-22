@@ -8,7 +8,7 @@
     background: #D1AE00;
   
     position: fixed;
-    z-index: 10000000000000000000000000000;
+    z-index: 9999999; 
     top: 0px;
     left: 0;
   
