@@ -66,6 +66,10 @@ const Item = ({ slug }) => {
   }
 
   const options = {
+    settings: {
+      disableWheelControls: false,
+      disablePanzoom: true
+    },
     buttons: {
       backgroundColor: 'rgba(30,30,36,0.8)',
       iconColor: 'rgba(255, 255, 255, 0.8)',
