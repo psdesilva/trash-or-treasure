@@ -6,12 +6,10 @@
   
   #nprogress .bar {
     background: #D1AE00;
-  
     position: fixed;
     z-index: 9999999; 
     top: 0px;
     left: 0;
-  
     width: 100%;
     height: 2px;
   }

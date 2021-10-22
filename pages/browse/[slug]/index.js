@@ -14,6 +14,7 @@ import useMediaQuery from '../../../hooks/MediaQuery'
 import { useUser } from '@auth0/nextjs-auth0';
 import DeleteConfirmationModal from '../../../components/DeleteConfirmationModal'
 import { SRLWrapper } from "simple-react-lightbox";
+import Head from 'next/head'
 
 const Item = ({ slug }) => {
   const isBreakPoint = useMediaQuery(799)
@@ -87,6 +88,9 @@ const Item = ({ slug }) => {
   if (loading == true) {
     return (
       <div className={itemStyle.container}>
+        <Head>
+          <title>Not Found | Trash or Treasure</title>
+        </Head>
         <div className={itemStyle.back}>
           <a href="#" onClick={goBack}><FiArrowLeftCircle /></a>
         </div>
@@ -97,6 +101,10 @@ const Item = ({ slug }) => {
   } else {
     return (
       <div className={itemStyle.container}>
+          <Head>
+              <title>{item.name} | Trash or Treasure</title>
+              <meta name="keywords" content={`Sri Lanka, free, used, trinkets, random, Trash or Treasure, trash, treasure, ${item.name}, ${item.location}`}></meta>
+          </Head>
           <div className={itemStyle.back}>
             <a href="#" onClick={goBack}><FiArrowLeftCircle /></a>
             {user ? user.sub === item.user ? <button onClick={() => deleteConfirm(item.id)}><MdDeleteForever /></button> : '' : ''}

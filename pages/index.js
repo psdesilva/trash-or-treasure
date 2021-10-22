@@ -10,6 +10,10 @@ export default function Home() {
 
   return (
     <>
+    <Head>
+      <title>Home | Trash or Treasure</title>
+      <meta name="keywords" content="Sri Lanka, free, used, trinkets, random, Trash or Treasure, trash, treasure"></meta>
+    </Head>
       { isBreakPoint ? (
         <div className={LandingPageStyles.landingPage}>
           <MobileLandingPage />
