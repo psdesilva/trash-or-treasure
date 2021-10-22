@@ -13,6 +13,7 @@ import { MdDeleteForever } from "@react-icons/all-files/md/MdDeleteForever";
 import useMediaQuery from '../../../hooks/MediaQuery'
 import { useUser } from '@auth0/nextjs-auth0';
 import DeleteConfirmationModal from '../../../components/DeleteConfirmationModal'
+import { SRLWrapper } from "simple-react-lightbox";
 
 const Item = ({ slug }) => {
   const isBreakPoint = useMediaQuery(799)
@@ -64,6 +65,25 @@ const Item = ({ slug }) => {
     }
   }
 
+  const options = {
+    buttons: {
+      backgroundColor: 'rgba(30,30,36,0.8)',
+      iconColor: 'rgba(255, 255, 255, 0.8)',
+      iconPadding: '10px',
+      showAutoplayButton: false,
+      showCloseButton: true,
+      showDownloadButton: false,
+      showFullscreenButton: true,
+      showNextButton: false,
+      showPrevButton: false,
+      showThumbnailsButton: false,
+      size: '40px'
+    },
+    thumbnails: {
+      showThumbnails: false
+    },
+  }
+
   if (loading == true) {
     return (
       <div className={itemStyle.container}>
@@ -83,13 +103,16 @@ const Item = ({ slug }) => {
           </div>
           <div className={itemStyle.itemDetails}>
           { isBreakPoint ? <div className={itemStyle.name}><h1>{item.name}</h1></div> : ''}
+            
             <div className={itemStyle.imageContainer}>
-              <Image 
-                src={item.img}
-                layout="fill"
-                objectFit="cover"
-                className={itemStyle.image}
-              /> 
+              <SRLWrapper options={options}>
+                <Image 
+                  src={item.img}
+                  layout="fill"
+                  objectFit="cover"
+                  className={itemStyle.image}
+                /> 
+              </SRLWrapper>
             </div>
             <div className={itemStyle.info}>
               { isBreakPoint ? '' : <div className={itemStyle.name}><h1>{item.name}</h1></div>}
