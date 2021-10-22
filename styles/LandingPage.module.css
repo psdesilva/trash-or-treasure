@@ -46,9 +46,6 @@
 }
 
 .separator {
-    /* margin-top: 4%;
-    content: "";
-    display: block; */
     width: 8%;
     height: 5px;
     border-radius: 10px;
@@ -63,15 +60,14 @@
 .landingPageDisplayText p {
     word-spacing: 1px;
     line-height: 1.8;
-    font-size: 1.2rem;
+    font-size: 1rem;
     white-space: pre-line;
 }
 
 .landingPageDisplayText p:last-child {
-    font-size: 1.4rem;
+    font-size: 1rem;
     line-height: 1;
     word-spacing: 1px;
-    /* letter-spacing: 1px; */
     font-weight: bold;
 }
 

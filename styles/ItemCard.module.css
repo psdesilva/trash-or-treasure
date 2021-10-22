@@ -1,7 +1,7 @@
 .container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
     border-radius: 10px;
     box-shadow:0px 5px 10px #1a1a1a;
     transition: all .3s ease-in-out;
@@ -75,10 +75,10 @@
     font-size: 0.8rem;
 }
 
-@media screen and (max-width: 799px) {
+/* @media screen and (max-width: 1080px) {
     .container {
         width: 250px;
         height: 250px;
     }
-}
+} */
 
