@@ -16,11 +16,11 @@
     
     .container:hover .title{
         white-space: normal;
-        transform: translateY(-240px);
+        transform: translateY(-200px);
     }
     
     .container:hover .text{
-        transform: translateY(-240px);
+        transform: translateY(-200px);
     }
     
     .container:hover .image {
