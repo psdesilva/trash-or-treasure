@@ -29,7 +29,7 @@ const UserMenu = ({ openMenu, setOpenMenu, setShowItemModal }) => {
                 <a href="/api/auth/logout">
                     <div className={menuStyle.menuItem}>
                         <BiLogOut className={menuStyle.subMenuIcon}/>
-                        <p>Logout</p>
+                        <p>Log out</p>
                     </div>
                 </a>
                 </> 
@@ -37,7 +37,7 @@ const UserMenu = ({ openMenu, setOpenMenu, setShowItemModal }) => {
                 <a href="/api/auth/login">
                     <div className={menuStyle.menuItem}>
                         <BiLogIn className={menuStyle.subMenuIcon}/>
-                        <p>Log-in / Register</p>
+                        <p>Log in / Register</p>
                     </div>
                 </a>
             }

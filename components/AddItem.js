@@ -95,7 +95,6 @@ const AddItem = ({ setAddItemDone, setAddedItem }) => {
             setAddedItem(newItem);
             setAddItemDone(true);
         }
-        console.log(items);
     }
  
     return (

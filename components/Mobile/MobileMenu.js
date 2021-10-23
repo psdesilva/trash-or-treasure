@@ -36,14 +36,14 @@ const MobileMenu = ({ setOpenMenu, openMenu, openModal, setShowItemModal }) => {
                         <a href="/api/auth/logout">
                             <div className={navbarStyle.menuItem}>
                                 <BiLogOut className={navbarStyle.subMenuIcon}/>
-                                <p>Logout</p>
+                                <p>Log out</p>
                             </div>
                         </a>
                     </> : 
                     <a href="/api/auth/login">
                         <div className={navbarStyle.menuItem}>
                             <BiLogIn className={navbarStyle.subMenuIcon}/>
-                            <p>Log-in / Register</p>
+                            <p>Log in / Register</p>
                         </div>
                     </a>
                 }

@@ -29,7 +29,7 @@ const LoginPromptModal = ({ showLoginPromptModal, onClose, setShowLoginPromptMod
                     <p>Please Log In to Add Items</p>
                     <div className={modalStyle.buttons}>
                         <button className={modalStyle.cancelBtn} onClick={handleClose}>Cancel</button>
-                        <a className={modalStyle.loginBtn} href="/api/auth/login">Login/Register</a>
+                        <a className={modalStyle.loginBtn} href="/api/auth/login">Log in/Register</a>
                     </div>
                 </div>
             </div>

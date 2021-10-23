@@ -40,7 +40,7 @@
     background-color: transparent;
     border: 2px solid tomato;
     color: tomato;
-    transition: all 0.3s ease-in;
+    transition: all 0.3s ease;
 }
 
 @media (hover: hover) {

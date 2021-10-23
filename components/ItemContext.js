@@ -28,7 +28,7 @@ function useItemContext () {
     used: 'Used More Than One Year', broken: 'Partially Broken', description: "fan works, doesn't rotate"},
     {user: 0, id: 4, name: 'Chinaware set', img:'https://res.cloudinary.com/prnkdslv/image/upload/v1634894314/TrashOrTreasure/ItemImages/e832b83dff635ddceaadb43817b24e85_s8dfnj.jpg', location: 'Rajagiriya',
     type: 'Household', contact: { Facebook: 'Mark Zuckerberg' },
-    used: 'Used Few Months', broken: 'Unbroken', description: "Got these as a gift, just takes up space around the house. Feel free to take all or some."}, 
+    used: 'Unused', broken: 'Unbroken', description: "Got these as a gift, just takes up space around the house. Feel free to take all or some."}, 
     {user: 0, id: 5, name: 'Xbox Controller', img:'https://res.cloudinary.com/prnkdslv/image/upload/v1633503650/TrashOrTreasure/ItemImages/IMG_5159_pycavk.jpg', location: 'Ragama',
     type: 'Electronics', contact: { Twitter: '@nasa' },
     used: 'Used More Than One Year', broken: 'Unbroken', description: "Rock Candy brand Xbox controller"},

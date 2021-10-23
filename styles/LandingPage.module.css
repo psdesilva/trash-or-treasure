@@ -45,16 +45,16 @@
     text-transform: uppercase;
 }
 
+.or {
+    font-size: 3rem;
+    font-weight: 400;
+}
+
 .separator {
     width: 8%;
     height: 5px;
     border-radius: 10px;
     background-color: #232323;
-}
-
-.or {
-    font-size: 3rem;
-    font-weight: 400;
 }
 
 .landingPageDisplayText p {
